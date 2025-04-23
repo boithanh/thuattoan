@@ -5,17 +5,13 @@ let theP = '';
 let resultPanel = document.querySelector(".number-content");
 let soLan = 0;
 function renderP(number) {
-    return `<p class="animate__animated animate__fadeInRight pulse ${colorCheck(number)}">${number}</p>`;
+    return `<p class="animate__animated animate__fadeInRight pulse ${colorCheck(number)}">${number > 0 && number <= 9 ? '0' + number : number}</p>`;
 }
 function randomNoDuplicate() {
     let num;
     do {
         num = Math.floor(Math.random() * 45) + 1;
     } while (arrChoose.includes(num));
-    return num;
-}
-function randomDefault() {
-    let num = Math.floor(Math.random() * 45) + 1;
     return num;
 }
 function colorCheck(number) {
@@ -43,22 +39,23 @@ function colorCheck(number) {
 function sapXep(arr = [...arrChoose]) {
     return arr.sort((a, b) => a - b);
 }
-function timSoDauTien(arr = [...arrMega], num) {
-    if (arr.length == 0 || soLan >= 6)
+function timSoDauTien(arr = arrMega, num) {
+    if (soLan >= 6)
         return;
-    num = arrChoose.length > 0 ? randomNoDuplicate() : randomDefault();
-    resultPanel.innerHTML += renderP(num);
+    num = randomNoDuplicate();
+    console.log(num);
     let index = arr.findIndex((item, index) => {
         return item === num;
     });
     if (index != -1) {
-        arrChoose.push(arrMega[index]);
-        arrMega.splice(index, 1);
-        // console.log([...arrMega]);
+        console.log("vị trí là:", index);
+        resultPanel.innerHTML += renderP(arr[index]);
+        arrChoose.push(arr[index]);
+        console.log("mảng lấy ra:", arrChoose);
+        arr.splice(index, 1);
+        console.log(arr);
         soLan += 1;
-    }
-    else {
-        timSoDauTien([...arrMega]);
+        console.log("số lần trong hàm", soLan);
     }
 }
 const btn = document.getElementById("btnGen");
@@ -78,6 +75,7 @@ btnSort.onclick = function () {
 const btnClean = document.getElementById("btnClean");
 btnClean.onclick = function () {
     resultPanel.replaceChildren();
+    arrMega = Array.from({ length: 45 }).map((_, i) => i + 1);
     arrChoose = [];
     soLan = 0;
 };

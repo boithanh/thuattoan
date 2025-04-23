@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+body {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
 .container {
   max-width: 1140px;
   margin: 0 auto;
@@ -11,24 +17,57 @@
 
 #numberPanel {
   min-height: 100vh;
-  padding: 200px 0;
+  padding-top: 50px;
   margin: 0 auto;
   text-align: center;
   background-color: #f2f2f2;
 }
+#numberPanel .control-panel {
+  background-color: #e2b1bf;
+  margin-top: 50px;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
 #numberPanel .number-content {
   background-color: #eaeaea;
-  padding: 100px 20px;
+  min-height: 500px;
+  padding: 200px 0;
+  border: 1px dotted;
 }
 #numberPanel .number-content p {
-  height: 40px;
-  width: 40px;
+  height: 100px;
+  width: 100px;
+  font-size: 3rem;
   border-radius: 100%;
   background-color: red;
   text-align: center;
   display: inline-block;
-  line-height: 35px;
+  line-height: 5.5rem;
   margin: 0 5px;
+}
+@media screen and (max-width: 820px) {
+  #numberPanel .number-content p {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+    line-height: 4rem;
+  }
+}
+@media screen and (max-width: 577px) {
+  #numberPanel .number-content p {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    line-height: 2.75rem;
+  }
+}
+@media screen and (max-width: 390px) {
+  #numberPanel .number-content p {
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
 }
 
 .pulse {
@@ -36,7 +75,7 @@
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: ease-in-out;
-  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 @keyframes pulse {
