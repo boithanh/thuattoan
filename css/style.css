@@ -4,15 +4,26 @@
   box-sizing: border-box;
 }
 
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+a,
+pre,
+i,
+b {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-}
-
-.container {
-  max-width: 1140px;
-  margin: 0 auto;
 }
 
 #numberPanel {
@@ -21,6 +32,10 @@ body {
   margin: 0 auto;
   text-align: center;
   background-color: #f2f2f2;
+}
+#numberPanel .container {
+  max-width: 1140px;
+  margin: 0 auto;
 }
 #numberPanel .control-panel {
   background-color: #e2b1bf;
@@ -85,4 +100,4 @@ body {
   75% {
     transform: scale(0.9);
   }
-}/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=style.css.map */

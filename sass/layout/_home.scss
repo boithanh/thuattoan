@@ -1,24 +1,14 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    user-select: none;
-}
-
-.container {
-    max-width: 1140px;
-    margin: 0 auto;
-}
-
 #numberPanel {
     min-height: 100vh;
     padding-top: 50px;
     margin: 0 auto;
     text-align: center;
     background-color: #f2f2f2;
+
+    .container {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
 
     .control-panel {
         background-color: #e2b1bf;

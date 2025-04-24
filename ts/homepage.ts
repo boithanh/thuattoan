@@ -82,10 +82,3 @@ btnClean.onclick = function () {
     arrChoose = [];
     soLan = 0;
 };
-
-
-
-
-
-
-
