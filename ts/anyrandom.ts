@@ -6,6 +6,8 @@ const btnClose = document.getElementById('btnClose') as HTMLElement;
 const btnXaoTron = document.getElementById('btnXaoTron') as HTMLElement;
 const frmRandom = document.getElementById("frmRandom") as HTMLFormElement;
 const tagP = document.getElementById("modalContent") as HTMLElement;
+const btnTang = document.getElementById("btnTang") as HTMLElement;
+const btnGiam = document.getElementById("btnGiam") as HTMLElement;
 const options = {
     placement: 'center',
     backdrop: 'dynamic',
@@ -50,13 +52,20 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             return arr;
         }
+        function sortIncrease(arr: any[]) {
+            return arr.sort((a: number, b: number) => a - b)
+        }
+
+        function sortDescrease(arr: any[]) {
+            return arr.sort((a: number, b: number) => b - a)
+        }
 
         frmRandom.onsubmit = function (e: SubmitEvent) {
             e.preventDefault();
             // let value = e.target.value;
-            const target = e.target as HTMLFormElement; // Ép kiểu
-            const textAria = target.querySelector("textarea[id='message']") as HTMLInputElement;
-            const values = textAria.value;
+            let target = e.target as HTMLFormElement; // Ép kiểu
+            let textAria = target.querySelector("textarea[id='message']") as HTMLInputElement;
+            let values = textAria.value;
             if (values) {
                 let data = convertData(values);
                 let result = randomArray(data);
@@ -69,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         btnAccept.onclick = () => {
             let textAria = document.getElementById("message") as HTMLInputElement;
-            console.log(textAria.value);
             textAria.value = "";
             modal.hide();
         }
@@ -92,5 +100,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Chưa nhập mà đã muốn trộn rồi seo @o@");
             }
         }
+        btnTang.addEventListener('click', function () {
+            let data = getValue();
+            if (data) {
+                let dataConverted = sortIncrease(convertData(data)).join("\n").trim();
+                tagP.innerHTML = dataConverted;
+                modal.show();
+            }
+            else {
+                alert("Chưa có gì nên chưa sắp xếp nha")
+            }
+        });
+        btnGiam.addEventListener('click', function () {
+            let data = getValue();
+            if (data) {
+                let dataConverted = sortDescrease(convertData(data)).join("\n").trim();
+                tagP.innerHTML = dataConverted;
+                modal.show();
+            }
+            else {
+                alert("Chưa có gì nên chưa sắp xếp nha")
+            }
+
+        })
     }
 });
