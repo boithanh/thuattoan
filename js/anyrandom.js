@@ -5,6 +5,8 @@ const btnClose = document.getElementById('btnClose');
 const btnXaoTron = document.getElementById('btnXaoTron');
 const frmRandom = document.getElementById("frmRandom");
 const tagP = document.getElementById("modalContent");
+const btnTang = document.getElementById("btnTang");
+const btnGiam = document.getElementById("btnGiam");
 const options = {
     placement: 'center',
     backdrop: 'dynamic',
@@ -44,12 +46,18 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             return arr;
         }
+        function sortIncrease(arr) {
+            return arr.sort((a, b) => a - b);
+        }
+        function sortDescrease(arr) {
+            return arr.sort((a, b) => b - a);
+        }
         frmRandom.onsubmit = function (e) {
             e.preventDefault();
             // let value = e.target.value;
-            const target = e.target; // Ép kiểu
-            const textAria = target.querySelector("textarea[id='message']");
-            const values = textAria.value;
+            let target = e.target; // Ép kiểu
+            let textAria = target.querySelector("textarea[id='message']");
+            let values = textAria.value;
             if (values) {
                 let data = convertData(values);
                 let result = randomArray(data);
@@ -62,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         btnAccept.onclick = () => {
             let textAria = document.getElementById("message");
-            console.log(textAria.value);
             textAria.value = "";
             modal.hide();
         };
@@ -85,5 +92,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("Chưa nhập mà đã muốn trộn rồi seo @o@");
             }
         };
+        btnTang.addEventListener('click', function () {
+            let data = getValue();
+            if (data) {
+                let dataConverted = sortIncrease(convertData(data)).join("\n").trim();
+                tagP.innerHTML = dataConverted;
+                modal.show();
+            }
+            else {
+                alert("Chưa có gì nên chưa sắp xếp nha");
+            }
+        });
+        btnGiam.addEventListener('click', function () {
+            let data = getValue();
+            if (data) {
+                let dataConverted = sortDescrease(convertData(data)).join("\n").trim();
+                tagP.innerHTML = dataConverted;
+                modal.show();
+            }
+            else {
+                alert("Chưa có gì nên chưa sắp xếp nha");
+            }
+        });
     }
 });
