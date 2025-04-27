@@ -26,7 +26,6 @@ document.querySelector("body")!.innerHTML = `<main>
                                 <button id="btnSort" class="btn btn-info me-2">Sắp xếp</button>
                                 <button id="btnClean" class="btn btn-light me-2">Làm lại</button>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -38,7 +37,7 @@ document.querySelector("body")!.innerHTML = `<main>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12 text-center">
-                    <a href="any-random.html" class="text-white">⏩ Thử app random một dãy bất kì mà bạn nhập
+                    <a href="./view/any-random.html" class="text-white">⏩ Thử app random một dãy bất kì mà bạn nhập
                         vào ⏪ </a>
                 </div>
             </div>
