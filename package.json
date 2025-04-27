@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npx esbuild ts/anyrandom.ts ts/homepage.ts --bundle --outdir=js --platform=browser --watch",
-    "build": "npx esbuild ts/anyrandom.ts ts/homepage.ts --bundle --outdir=dist --platform=browser --minify && npx javascript-obfuscator dist --output dist/obfuscator"
+    "dev": "npx esbuild ts/anyrandom.ts ts/homepage.ts --bundle --outdir=public/js --platform=browser",
+    "build": "npx esbuild ts/anyrandom.ts ts/homepage.ts --bundle --outdir=public/js --platform=browser --minify && npx javascript-obfuscator public/js --output public/js && npx cpy index.html css/* view/* public/"
   },
   "devDependencies": {
+    "cpy-cli": "^5.0.0",
     "esbuild": "^0.25.3",
     "javascript-obfuscator": "^4.1.1",
     "typescript": "^5.8.3"
