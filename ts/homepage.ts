@@ -38,7 +38,7 @@ document.querySelector("body")!.innerHTML = `<main>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12 text-center">
-                    <a href="/any-random.html" class="text-white">⏩ Thử app random một dãy bất kì mà bạn nhập
+                    <a href="any-random.html" class="text-white">⏩ Thử app random một dãy bất kì mà bạn nhập
                         vào ⏪ </a>
                 </div>
             </div>
