@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npx esbuild ts/anyrandom.ts ts/homepage.ts --bundle --outdir=js --platform=browser",
-    "copyfile": "npx cpy index.html css/* view/* public/",
-    "build": "npx esbuild ts/anyrandom.ts ts/homepage.ts --bundle --outdir=public/js --platform=browser --minify && npx javascript-obfuscator public/js --output public/js && npm run copyfile"
+    "build": "npx esbuild ts/anyrandom.ts ts/homepage.ts --bundle --outdir=public/js --platform=browser --minify && npx javascript-obfuscator public/js --output public/js"
   },
   "devDependencies": {
     "cpy-cli": "^5.0.0",
