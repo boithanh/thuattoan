@@ -1,4 +1,32 @@
-document.querySelector("body")!.innerHTML = `<main>
+document.querySelector("body")!.innerHTML = `
+<!-- Breadcrumb -->
+<Header>
+<nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+    <li class="inline-flex items-center">
+      <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Home</span>
+      </div>
+    </li>
+    <li>
+      <div class="flex items-center">
+        <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+        </svg>
+        <a href="./any-random.html" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Templates</a>
+      </div>
+    </li>
+    <li aria-current="page">
+      <div class="flex items-center">
+        <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+        </svg>
+        <a href="./find-and-choose-number.html" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Find & choose number</a>
+        
+    </li>
+  </ol>
+</nav>
+</Header>
+<main>
         <section id="numberPanel">
             <div class="container">
                 <div class="row align-items-center justify-content-center">
@@ -37,8 +65,7 @@ document.querySelector("body")!.innerHTML = `<main>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12 text-center">
-                    <a href="./any-random.html" class="text-white">⏩ Thử app random một dãy bất kì mà bạn nhập
-                        vào ⏪ </a>
+                    <p class="text-white">Copyright Bối Thạnh @2025</p>
                 </div>
             </div>
         </div>
@@ -161,7 +188,7 @@ btnClean.onclick = function () {
             arrMega = Array.from({ length: 45 }).map((_, i) => i + 1);
             isValid = true;
         }
-        else if (radio.checked && radio.value == "power") {
+        if (radio.checked && radio.value == "power") {
             arrPower = Array.from({ length: 55 }).map((_, i) => i + 1);
             isValid = true;
         }

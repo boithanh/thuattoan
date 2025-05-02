@@ -1,6 +1,7 @@
 let textInput = document.getElementById("message") as HTMLInputElement;
 let textOutput = document.getElementById("result") as HTMLInputElement;
 let textNotExist = document.getElementById("notExist") as HTMLInputElement;
+let selectLoai = document.getElementById("selectLoai") as HTMLInputElement;
 let tableContent = document.querySelector("table") as HTMLElement
 
 
@@ -8,9 +9,10 @@ document.getElementById("btnLoc")!.onclick = () => {
     if (getValue()) {
         // document.getElementById("table-inner")?.classList.remove("hidden");
         textOutput.value = removeDuplicate().map(Number).sort((a: number, b: number) => a - b).join("\n"); //.map(Number) : duyệt qua từng phần tử và chuyển string thành number. Cách viết tường mình: .map(Number(a[i]))
-        textNotExist.value = numberNotExist().map(Number).sort((a: number, b: number) => a - b).join("\n");
+        textNotExist.value = numberNotExist(Number(selectLoai.value)).map(Number).sort((a: number, b: number) => a - b).join("\n");
         document.getElementById("table-inner")?.classList.remove("hidden");
-        tableContent.innerHTML += renderColumn();
+        tableContent.innerHTML = renderColumn();
+        console.log(selectLoai.value);
     }
 }
 function getValue() {
@@ -18,8 +20,20 @@ function getValue() {
 }
 function convertToArray(str: string) {
     let regex = /[\s.,]+/;
-    return str.split(regex);
+    let result = str.split(regex);
+    if (result[0].length <= 2) {
+        return result
+    }
+    let result2 = result.map(line => line.match(/\d{2}/g) || []);
+    return result2.flat();
 }
+
+function convertStr(str: string) {
+    const lines = str.trim().split('\n');
+    const result = lines.map(line => line.match(/\d{2}/g));
+    return result.flat();
+}
+
 function removeDuplicate() {
     let arrData = convertToArray(getValue());
     let arrSet = [...new Set(arrData)];
@@ -27,10 +41,10 @@ function removeDuplicate() {
     return backtoArr;
 }
 
-function numberNotExist() {
+function numberNotExist(loai: number = 45) {
     let arrExist = removeDuplicate();
     let newArr = [];
-    for (let i = 1; i <= 55; i++) {
+    for (let i = 1; i <= loai; i++) {
         let value = i.toString();
         if (!arrExist.includes(value)) {
             newArr.push(value)
@@ -43,37 +57,6 @@ function getDuplicateValues() {
     let arrData = convertToArray(getValue());
     return arrData.filter((item, index) => (arrData.indexOf(item) !== index))
 }
-
-
-
-function setupTableData() {
-    let str = "";
-    let num = 0;
-    let objCount = countingDuplicate();
-    for (let key in objCount) {
-        num++;
-        str += `<pre><tr class="bg-blue-600 border-b border-blue-400">
-                            <td class="px-6 py-4">
-                                ${key}
-                            </td>
-                            <td class="px-6 py-4">
-                                ${objCount[key]}
-                            </td>
- </tr></pre>`
-    }
-    return str;
-}
-// Có thể dùng 2 cách khác là:
-// // Object.keys(objCount).forEach((key) => {
-//     console.log(key, objCount[key]);
-// })
-//Hoặc
-// Object.entries(objCount).forEach((key, value) => {
-//     console.log(key);
-// })
-
-
-
 
 // Tìm các phần tử đã lọc trùng trong mảng gốc và In ra số lầ xuất hiện của chúng trong mảng gốc
 //Cách 1: 
