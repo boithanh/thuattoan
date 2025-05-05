@@ -1,28 +1,11 @@
 document.querySelector("body")!.innerHTML = `
 <!-- Breadcrumb -->
 <header>
-<nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
-  <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-    <li class="inline-flex items-center">
-      <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Home</span>
-      </div>
-    </li>
-    <li>
-      <div class="flex items-center text-white">
-        <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-        </svg>
-        <a href="./any-random.html" class="ms-1 text-sm font-medium text-white hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Templates</a>
-      </div>
-    </li>
-    <li aria-current="page">
-      <div class="flex items-center">
-        <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-        </svg>
-        <a href="./find-and-choose-number.html" class="ms-1 text-sm font-medium text-white hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Find & choose number</a>
-        
-    </li>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active"><span class="ms-1 small fw-medium text-muted md:ms-2">Home</span></li>
+    <li class="breadcrumb-item"><a href="./any-random.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Any random</a></li>
+    <li class="breadcrumb-item" aria-current="page"> <a href="./find-and-choose-number.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Find & choose number</a></li>
   </ol>
 </nav>
 </header>

@@ -1,25 +1,25 @@
 document.querySelector("body")!.innerHTML = `
 <Header>
-<nav class="flex px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
-  <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-    <li class="inline-flex items-center">
-      <a href="./index.html" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Templates</a>
-      </div>
+<nav class="d-flex px-3 py-2 text-secondary border border-secondary rounded bg-light" aria-label="Breadcrumb">
+  <ol class="d-inline-flex align-items-center gap-1 gap-md-2">
+    <li class="d-inline-flex align-items-center">
+      <a href="./index.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Templates</a>
     </li>
     <li>
-      <div class="flex items-center">
-        <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+      <div class="d-flex align-items-center">
+        <svg class="rotate-0 d-block" style="width: 0.75rem; height: 0.75rem; margin: 0 0.25rem; color: #6c757d;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
         </svg>
-        <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Any random</span>
+        <span class="ms-1 small fw-medium text-muted md:ms-2">Any random</span>
       </div>
     </li>
     <li aria-current="page">
-      <div class="flex items-center">
-        <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+      <div class="d-flex align-items-center">
+        <svg class="rotate-0" style="width: 0.75rem; height: 0.75rem; margin: 0 0.25rem; color: #6c757d;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
         </svg>
-        <a href="./find-and-choose-number.html" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Find & choose number</a>
+        <a href="./find-and-choose-number.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Find & choose number</a>
+      </div>
     </li>
   </ol>
 </nav>

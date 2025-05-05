@@ -7,17 +7,16 @@ let tableContent = document.querySelector("table") as HTMLElement
 
 document.getElementById("btnLoc")!.onclick = () => {
     if (getValue()) {
-        // document.getElementById("table-inner")?.classList.remove("hidden");
-        textOutput.value = removeDuplicate().map(Number).sort((a: number, b: number) => a - b).join("\n"); //.map(Number) : duyệt qua từng phần tử và chuyển string thành number. Cách viết tường mình: .map(Number(a[i]))
-        textNotExist.value = numberNotExist(Number(selectLoai.value)).map(Number).sort((a: number, b: number) => a - b).join("\n");
+        textOutput.value = removeDuplicate().map(Number).join("\n"); //.map(Number) : duyệt qua từng phần tử và chuyển string thành number. Cách viết tường mình: .map(Number(a[i]))
+        textNotExist.value = numberNotExist(Number(selectLoai.value)).map(Number).join("\n");
         document.getElementById("table-inner")?.classList.remove("hidden");
         tableContent.innerHTML = renderColumn();
-        console.log(selectLoai.value);
     }
 }
 function getValue() {
     return textInput.value.trim();
 }
+
 function convertToArray(str: string) {
     let regex = /[\s.,]+/;
     let result = str.split(regex);
@@ -42,16 +41,26 @@ function removeDuplicate() {
 }
 
 function numberNotExist(loai: number = 45) {
-    let arrExist = removeDuplicate();
+    let arrExist = removeDuplicate().map(Number);
     let newArr = [];
     for (let i = 1; i <= loai; i++) {
-        let value = i.toString();
+        let value = i;
         if (!arrExist.includes(value)) {
             newArr.push(value)
         }
     }
-    return newArr;
+    let arrShuttfled = shuttfleArr(newArr); // Trộn ngẫu nhiên các phần tử mảng để ra 1 mảng lộn xộn theo thuật thoán của Ronald Fisher và Frank Yates (năm 1938)
+    return arrShuttfled;
 }
+
+function shuttfleArr(arr: any[]) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * arr.length);
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
 
 function getDuplicateValues() {
     let arrData = convertToArray(getValue());
