@@ -1,29 +1,34 @@
 document.querySelector("body")!.innerHTML = `
-<Header>
-<nav class="d-flex px-3 py-2 text-secondary border border-secondary rounded bg-light" aria-label="Breadcrumb">
-  <ol class="d-inline-flex align-items-center gap-1 gap-md-2">
-    <li class="d-inline-flex align-items-center">
-      <a href="./index.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Templates</a>
-    </li>
-    <li>
-      <div class="d-flex align-items-center">
-        <svg class="rotate-0 d-block" style="width: 0.75rem; height: 0.75rem; margin: 0 0.25rem; color: #6c757d;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-        </svg>
-        <span class="ms-1 small fw-medium text-muted md:ms-2">Any random</span>
-      </div>
-    </li>
-    <li aria-current="page">
-      <div class="d-flex align-items-center">
-        <svg class="rotate-0" style="width: 0.75rem; height: 0.75rem; margin: 0 0.25rem; color: #6c757d;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-        </svg>
-        <a href="./find-and-choose-number.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Find & choose number</a>
-      </div>
-    </li>
-  </ol>
-</nav>
-</Header>
+<header>
+        <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+            aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+                <li class="inline-flex items-center">
+                    <a href="./index.html"
+                        class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Home</a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-white " aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 9 4-4-4-4" />
+                        </svg>
+                        <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Any random</span>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 9 4-4-4-4" />
+                        </svg>
+                       <a href="./find-and-choose-number.html" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Find & choose number</a>
+                </li>
+            </ol>
+        </nav>
+    </header>
 <main>
         <section class="any-random py-10 h-screen">
             <div class="container mx-auto">
@@ -58,13 +63,13 @@ document.querySelector("body")!.innerHTML = `
             <!-- Main modal -->
             <div id="default-modal" tabindex="-1"
                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative p-2 w-full max-w-2xl max-h-full">
+                <div class="relative p-2 max-sm:w-full sm:w-6/12 max-h-full">
                     <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                    <div class="relative bg-white rounded-lg shadow-sm">
                         <!-- Modal header -->
                         <div
                             class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            <h3 class="text-xl font-semibold text-gray-900">
                                 Số ngẫu nhiên
                             </h3>
                             <button id="btnClose" type="button"
@@ -78,17 +83,16 @@ document.querySelector("body")!.innerHTML = `
                         </div>
                         <!-- Modal body -->
                         <div class="p-4 md:p-5 space-y-4">
-                            <pre id="modalContent" class="text-base leading-relaxed text-black dark:text-white">
+                            <pre id="modalContent" class="text-base leading-relaxed text-black">
                             </pre>
                         </div>
                         <!-- Modal footer -->
                         <div
-                            class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600 gap-2">
+                            <button id="btnDecline" data-modal-hide="default-modal" type="button"
+                                class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tiếp tục</button>
                             <button id="btnAccept" data-modal-hide="default-modal" type="button"
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Reset</button>
-                            <button id="btnDecline" data-modal-hide="default-modal" type="button"
-                                class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Làm
-                                lại</button>
                         </div>
                     </div>
                 </div>
@@ -105,7 +109,7 @@ document.querySelector("body")!.innerHTML = `
             </div>
         </div>
     </footer>`
-declare var Modal: any;
+
 const btnAccept = document.getElementById('btnAccept') as HTMLElement;
 const btnDecline = document.getElementById('btnDecline') as HTMLElement;
 const btnClose = document.getElementById('btnClose') as HTMLElement;
@@ -114,6 +118,8 @@ const frmRandom = document.getElementById("frmRandom") as HTMLFormElement;
 const tagP = document.getElementById("modalContent") as HTMLElement;
 const btnTang = document.getElementById("btnTang") as HTMLElement;
 const btnGiam = document.getElementById("btnGiam") as HTMLElement;
+declare var Modal: any;
+import { showNotification } from "./utils";
 const options = {
     placement: 'center',
     backdrop: 'dynamic',
@@ -132,8 +138,8 @@ const options = {
 
 document.addEventListener("DOMContentLoaded", () => {
     const modalEl = document.getElementById('default-modal');
-    if (modalEl && window.Modal) {
-        const modal = new window.Modal(modalEl, options);
+    if (modalEl && Modal) {
+        const modal = new Modal(modalEl, options);
 
         function getValue() {
             let textAria = document.getElementById("message") as HTMLInputElement;
@@ -179,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 modal.show();
             }
             else {
-                alert("Bạn chưa nhập gì nha người đẹp")
+                showNotification("Bạn chưa nhập gì nha người đẹp")
             }
         }
         btnAccept.onclick = () => {
@@ -203,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 modal.show();
             }
             else {
-                alert("Chưa nhập mà đã muốn trộn rồi seo @o@");
+                showNotification("Chưa nhập mà đã muốn trộn rồi seo @o@")
             }
         }
         btnTang.addEventListener('click', function () {
@@ -214,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 modal.show();
             }
             else {
-                alert("Chưa có gì nên chưa sắp xếp nha")
+                showNotification("Chưa có gì nên chưa sắp xếp nha ní")
             }
         });
         btnGiam.addEventListener('click', function () {
@@ -225,9 +231,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 modal.show();
             }
             else {
-                alert("Chưa có gì nên chưa sắp xếp nha")
+                showNotification("Chưa có gì nên chưa sắp xếp nha")
             }
-
         })
     }
 });

@@ -3,6 +3,7 @@ let textOutput = document.getElementById("result") as HTMLInputElement;
 let textNotExist = document.getElementById("notExist") as HTMLInputElement;
 let selectLoai = document.getElementById("selectLoai") as HTMLInputElement;
 let tableContent = document.querySelector("table") as HTMLElement
+import { showNotification } from "./utils";
 
 
 document.getElementById("btnLoc")!.onclick = () => {
@@ -11,7 +12,18 @@ document.getElementById("btnLoc")!.onclick = () => {
         textNotExist.value = numberNotExist(Number(selectLoai.value)).map(Number).join("\n");
         document.getElementById("table-inner")?.classList.remove("hidden");
         tableContent.innerHTML = renderColumn();
+        showNotification("Phân tích thành công", 3000, { background: "linear-gradient(to right, #13547a , #80d0c7)", color: "white" });
     }
+    else {
+        showNotification("Nhớ nhập dãy số nha bạn!!", 3000, { background: "linear-gradient(to right, #ff0844, #ffb199)", color: "white" })
+    }
+}
+document.getElementById("btnClear")!.onclick = () => {
+    textInput.value = "";
+    textOutput.value = "";
+    textNotExist.value = ""
+    tableContent.innerHTML = "";
+    showNotification("Reset thành công", 3000, { background: "linear-gradient(to right, #13547a , #80d0c7)", color: "white" });
 }
 function getValue() {
     return textInput.value.trim();
@@ -49,8 +61,7 @@ function numberNotExist(loai: number = 45) {
             newArr.push(value)
         }
     }
-    let arrShuttfled = shuttfleArr(newArr); // Trộn ngẫu nhiên các phần tử mảng để ra 1 mảng lộn xộn theo thuật thoán của Ronald Fisher và Frank Yates (năm 1938)
-    return arrShuttfled;
+    return newArr;
 }
 
 function shuttfleArr(arr: any[]) {
@@ -134,6 +145,7 @@ function renderColumn() {
     let fineTimes: string[] = [];
     let sixTimes: string[] = [];
     let seventTimes: string[] = [];
+    let zeroTimes: string[] = textNotExist.value.split("\n")
 
     for (let key in objCount) {
         if (objCount[key] === 1) oneTime.push(key);
@@ -151,6 +163,7 @@ function renderColumn() {
     let str = `
     <thead class="text-black uppercase bg-gray-600 border-b border-blue-400 dark:text-white text-xl">
         <tr>
+            <th scope="col" class="px-6 py-3">0 có</th>
             <th scope="col" class="px-6 py-3">1 lần</th>
             <th scope="col" class="px-6 py-3">2 lần</th>
             <th scope="col" class="px-6 py-3">3 lần</th>
@@ -163,6 +176,7 @@ function renderColumn() {
     <tbody>`;
 
     for (let i = 0; i < maxLength; i++) {
+        const zero = zeroTimes[i] ?? "";
         const one = oneTime[i] ?? "";
         const two = twoTimes[i] ?? "";
         const three = threeTimes[i] ?? "";
@@ -172,6 +186,7 @@ function renderColumn() {
         const seven = seventTimes[i] ?? "";
         str += `
         <tr class="bg-gray-100 border-b border-black text-md">
+            <td class="px-6 py-4">${zero}</td>
             <td class="px-6 py-4">${one}</td>
             <td class="px-6 py-4">${two}</td>
             <td class="px-6 py-4">${three}</td>

@@ -26,12 +26,34 @@ body {
           user-select: none;
 }
 
+header nav {
+  background-color: #1e2939;
+  padding: 15px;
+  line-height: 30px;
+}
+header nav li a,
+header nav li span {
+  color: #999685;
+  font-size: 14px;
+}
+header .breadcrumb {
+  margin-bottom: 0;
+}
+header .breadcrumb-item + .breadcrumb-item::before {
+  content: " > ";
+  color: white;
+}
+header .breadcrumb-item.active span,
+header .breadcrumb-item.active a {
+  color: white !important;
+}
+
 #numberPanel {
   min-height: 100vh;
   padding-top: 200px;
   margin: 0 auto;
   text-align: center;
-  background-color: #f2f2f2;
+  background: url("./../../image/pattern.png");
 }
 @media screen and (max-width: 577px) {
   #numberPanel {
@@ -48,7 +70,7 @@ body {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 #numberPanel .number-content {
-  background-color: #eaeaea;
+  background-color: #f2f2f2;
   min-height: 400px;
   padding: 120px 0;
   border: 1px dotted;

@@ -1,9 +1,44 @@
+header {
+    nav {
+        background-color: #1e2939;
+        padding: 15px;
+        line-height: 30px;
+
+        li {
+
+            a,
+            span {
+                color: #999685;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .breadcrumb {
+        margin-bottom: 0;
+
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        content: " > ";
+        color: white;
+    }
+
+    .breadcrumb-item.active {
+
+        span,
+        a {
+            color: white !important;
+        }
+    }
+}
+
 #numberPanel {
     min-height: 100vh;
     padding-top: 200px;
     margin: 0 auto;
     text-align: center;
-    background-color: #f2f2f2;
+    background: url("./../../image/pattern.png");
 
     @media screen and (max-width:577px) {
         padding-top: 100px;
@@ -23,7 +58,7 @@
     }
 
     .number-content {
-        background-color: #eaeaea;
+        background-color: #f2f2f2;
         min-height: 400px;
         padding: 120px 0;
         border: 1px dotted;

@@ -1,3 +1,4 @@
+import { showNotification } from "./utils";
 document.querySelector("body")!.innerHTML = `
 <!-- Breadcrumb -->
 <header>
@@ -57,10 +58,8 @@ document.querySelector("body")!.innerHTML = `
 let arrMega = Array.from({ length: 45 }).map((_, i) => i + 1);
 let arrPower = Array.from({ length: 55 }).map((_, i) => i + 1);
 let arrChoose: number[] = []
-let theP = '';
 let resultPanel = document.querySelector(".number-content") as HTMLElement;
 let radios = document.querySelectorAll('input[name="radioRandom"]') as NodeListOf<HTMLInputElement>;
-
 let soLan: number = 0;
 
 function renderP(number: number) {
@@ -131,53 +130,64 @@ function randomPower(arr = arrPower) {
         soLan += 1;
     }
 }
+let currentOption: any = null;
+let selected: string | null = null;
+radios.forEach(radio => {
+    radio.onclick = function (event) {
+        let temp = event.target as HTMLInputElement;
+        selected = temp.value;
+    }
+})
+
 const btn = document.getElementById("btnGen") as HTMLButtonElement
 btn.onclick = function () {
     let isValid = false;
-    radios.forEach(radio => {
-        if (radio.checked && radio.value == "mega") {
-            isValid = true;
-            randomMega();
-        }
-        else if (radio.checked && radio.value == "power") {
-            isValid = true;
-            randomPower();
-
-        }
-    });
+    if (currentOption && selected !== currentOption) {
+        showNotification(`Bạn đang ở chức năng ${currentOption} \n Vui lòng nhấn nút "làm lại" rồi thử lại ^^`, 3000, { background: "linear-gradient(to right, #f6d365, #fda085)", color: "black" });
+        return;
+    }
+    if (soLan >= 6) {
+        showNotification("Đã chọn đủ số vui lòng reset lại", 3000, { background: "linear-gradient(to right, #30cfd0 , #330867)", color: "white" })
+        return;
+    }
+    currentOption = selected;
+    if (selected == "mega") {
+        randomMega();
+        isValid = true;
+    }
+    else if (selected == "power") {
+        randomPower();
+        isValid = true;
+    }
     if (!isValid) {
-        alert("Chưa chọn loại gì nha bạn hiền");
+        showNotification("Chưa chọn loại gì nha bạn hiền", 3000, { background: "linear-gradient(to right, #ff758c, #ff7eb3)", color: "white" })
     }
 }
+
 const btnSort = document.getElementById("btnSort") as HTMLButtonElement
 btnSort.onclick = function () {
     if (arrChoose.length < 1) {
-        alert("Chưa có gì khỏi sắp xếp nha ní")
+        showNotification("Chưa có gì khỏi sắp xếp nha ní", 3000, { background: "linear-gradient(to right, #667eea, #764ba2)", color: "white" })
     }
     let arrSorted = sapXep();
     let string = "";
     for (let item of arrSorted) {
         string += renderP(item)
     }
-    resultPanel.innerHTML = string;
-
+    if (string) {
+        resultPanel.innerHTML = string;
+        showNotification("Sắp xếp suôn sẻ", 3000, { background: "linear-gradient(to right, #eea2a2, #bbc1bf, #57c6e1, #b49fda, #7ac5d8)", color: "white" })
+    }
 }
 const btnClean = document.getElementById("btnClean") as HTMLButtonElement;
 btnClean.onclick = function () {
-    let isValid = false;
     resultPanel.replaceChildren();
-    radios.forEach(radio => {
-        if (radio.checked && radio.value == "mega") {
-            arrMega = Array.from({ length: 45 }).map((_, i) => i + 1);
-            isValid = true;
-        }
-        if (radio.checked && radio.value == "power") {
-            arrPower = Array.from({ length: 55 }).map((_, i) => i + 1);
-            isValid = true;
-        }
-    });
-    if (!isValid)
-        alert("Chưa có gì, làm lại mần chi ^^");
+    showNotification("Clean xong, mời bạn nhấn 'Lấy số'", 1000, { background: "linear-gradient(to right, #fdfcfb, #e2d1c3)", color: "black" })
     arrChoose = [];
     soLan = 0;
+    radios.forEach((radio) => {
+        radio.checked = false
+    })
+    selected = null;
+    currentOption = null;
 };
