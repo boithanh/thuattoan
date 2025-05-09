@@ -147,6 +147,7 @@ function renderColumn() {
     let seventTimes: string[] = [];
     let zeroTimes: string[] = textNotExist.value.split("\n")
 
+
     for (let key in objCount) {
         if (objCount[key] === 1) oneTime.push(key);
         else if (objCount[key] === 2) twoTimes.push(key);
@@ -156,9 +157,16 @@ function renderColumn() {
         else if (objCount[key] === 6) sixTimes.push(key);
         else if (objCount[key] === 7) seventTimes.push(key);
     }
+    shuttfleArr(zeroTimes);
+    shuttfleArr(oneTime);
+    shuttfleArr(twoTimes);
+    shuttfleArr(threeTimes);
+    shuttfleArr(fourTimes);
+    shuttfleArr(fineTimes);
+    shuttfleArr(sixTimes);
+    shuttfleArr(seventTimes);
 
-    const maxLength = Math.max(oneTime.length, twoTimes.length, threeTimes.length, fourTimes.length, fineTimes.length, sixTimes.length, seventTimes.length);
-
+    const maxLength = Math.max(zeroTimes.length, oneTime.length, twoTimes.length, threeTimes.length, fourTimes.length, fineTimes.length, sixTimes.length, seventTimes.length);
     // Render bảng
     let str = `
     <thead class="text-black uppercase bg-gray-600 border-b border-blue-400 dark:text-white text-xl">
@@ -186,7 +194,7 @@ function renderColumn() {
         const seven = seventTimes[i] ?? "";
         str += `
         <tr class="bg-gray-100 border-b border-black text-md">
-            <td class="px-6 py-4">${zero}</td>
+            <td class="px-6 py-4">${Math.floor(Number(zero) / 10) !== 0 ? zero : "0" + zero}</td>
             <td class="px-6 py-4">${one}</td>
             <td class="px-6 py-4">${two}</td>
             <td class="px-6 py-4">${three}</td>
