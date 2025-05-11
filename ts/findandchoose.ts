@@ -194,7 +194,10 @@ function renderColumn() {
         const seven = seventTimes[i] ?? "";
         str += `
         <tr class="bg-gray-100 border-b border-black text-md">
-            <td class="px-6 py-4">${Math.floor(Number(zero) / 10) !== 0 ? zero : "0" + zero}</td>
+            <td class="px-6 py-4">${zero === ""
+                ? "" : Math.floor(Number(zero) / 10) !== 0
+                    ? zero :
+                    "0" + zero}</td>
             <td class="px-6 py-4">${one}</td>
             <td class="px-6 py-4">${two}</td>
             <td class="px-6 py-4">${three}</td>
