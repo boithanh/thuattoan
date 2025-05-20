@@ -55,7 +55,7 @@
     </header>
 <main>
         <section class="any-random py-10 min-h-screen">
-            <div class="container mx-auto">
+            <div class="container mx-auto px-3">
                 <h1 class="mb-4 text-2xl font-extrabold text-gray-900 md:text-5xl lg:text-3xl text-center"><span
                         class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Nh\u1EADp
                         chu\u1ED7i </span>m\xE0 b\u1EA1n mu\u1ED1n random</h1>
@@ -80,6 +80,7 @@
                             class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                             id="btnGiam">Sort
                             gi\u1EA3m d\u1EA7n</button>
+                            <button id="btnChanLe" type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Xem Ch\u1EB5n l\u1EBB</button>
                     </div>
                 </form>
             </div>
@@ -107,7 +108,7 @@
                         </div>
                         <!-- Modal body -->
                         <div class="p-4 md:p-5 space-y-4">
-                            <pre id="modalContent" class="text-base leading-relaxed text-black">
+                            <pre id="modalContent" class="text-2xl leading-relaxed text-black">
                             </pre>
                         </div>
                         <!-- Modal footer -->
@@ -237,6 +238,27 @@
           modal.show();
         } else {
           showNotification("Ch\u01B0a c\xF3 g\xEC n\xEAn ch\u01B0a s\u1EAFp x\u1EBFp nha");
+        }
+      });
+      document.getElementById("btnChanLe")?.addEventListener("click", function() {
+        let data = getValue2();
+        if (data) {
+          let dataConverted = convertData2(data);
+          console.log(dataConverted);
+          let even = "";
+          let odd = "";
+          for (let num of dataConverted) {
+            if (Number(num) % 2 === 0) {
+              even += "- ";
+            } else {
+              odd += "+ ";
+            }
+          }
+          tagP.innerHTML = dataConverted.join(" ").trim();
+          tagP.innerHTML += "\n" + even + odd;
+          modal.show();
+        } else {
+          showNotification("B\u1EA1n ph\u1EA3i nh\u1EADp tr\u01B0\u1EDBc khi xem template ch\u1EB5n l\u1EBB nha");
         }
       });
     }
