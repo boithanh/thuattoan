@@ -5,8 +5,8 @@ document.querySelector("body")!.innerHTML = `
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item active"><span class="ms-1 small fw-medium text-muted md:ms-2">Home</span></li>
-    <li class="breadcrumb-item"><a href="./any-random.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Any random</a></li>
-    <li class="breadcrumb-item" aria-current="page"> <a href="./find-and-choose-number.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Find & choose number</a></li>
+    <li class="breadcrumb-item"><a href="./view/any-random.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Any random</a></li>
+    <li class="breadcrumb-item" aria-current="page"> <a href="./view/find-and-choose-number.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Find & choose number</a></li>
   </ol>
 </nav>
 </header>
