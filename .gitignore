@@ -75,6 +75,4 @@ $RECYCLE.BIN/
 
 #Plus
 node_modules/
-dist/
-js/
 # End of https://www.toptal.com/developers/gitignore/api/react,macos,windows

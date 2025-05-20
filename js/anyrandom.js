@@ -1,4 +1,28 @@
-document.querySelector("body")!.innerHTML = `
+"use strict";
+(() => {
+  // ts/utils.ts
+  function showNotification(text = "", duration = 3e3, style = { background: "linear-gradient(to right, #ff8177, #ff867a,#ff8c7f, #f99185, #cf556c, #b12a5b)", color: "white" }) {
+    Toastify({
+      text,
+      duration,
+      destination: "https://boithanh-dev.vercel.app/",
+      newWindow: true,
+      close: true,
+      gravity: "top",
+      // `top` or `bottom`
+      position: "right",
+      // `left`, `center` or `right`
+      stopOnFocus: true,
+      // Prevents dismissing of toast on hover
+      style,
+      onClick: function() {
+      }
+      // Callback after click
+    }).showToast();
+  }
+
+  // ts/anyrandom.ts
+  document.querySelector("body").innerHTML = `
 <header>
         <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
             aria-label="Breadcrumb">
@@ -33,8 +57,8 @@ document.querySelector("body")!.innerHTML = `
         <section class="any-random py-10 min-h-screen">
             <div class="container mx-auto">
                 <h1 class="mb-4 text-2xl font-extrabold text-gray-900 md:text-5xl lg:text-3xl text-center"><span
-                        class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Nhập
-                        chuỗi </span>mà bạn muốn random</h1>
+                        class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Nh\u1EADp
+                        chu\u1ED7i </span>m\xE0 b\u1EA1n mu\u1ED1n random</h1>
                 <form class="max-w-sm mx-auto" id="frmRandom">
                     <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                         message</label>
@@ -46,16 +70,16 @@ document.querySelector("body")!.innerHTML = `
                             class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-3 mt-5">Random!!!
                         </button>
                         <button id="btnXaoTron" type="button"
-                            class="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Xáo
-                            trộn</button>
+                            class="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">X\xE1o
+                            tr\u1ED9n</button>
                         <button type="button"
                             class="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                             id="btnTang">Sort
-                            Tăng dần</button>
+                            T\u0103ng d\u1EA7n</button>
                         <button type="button"
                             class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                             id="btnGiam">Sort
-                            giảm dần</button>
+                            gi\u1EA3m d\u1EA7n</button>
                     </div>
                 </form>
             </div>
@@ -70,7 +94,7 @@ document.querySelector("body")!.innerHTML = `
                         <div
                             class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
                             <h3 class="text-xl font-semibold text-gray-900">
-                                Số ngẫu nhiên
+                                S\u1ED1 ng\u1EABu nhi\xEAn
                             </h3>
                             <button id="btnClose" type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"><svg
@@ -90,7 +114,7 @@ document.querySelector("body")!.innerHTML = `
                         <div
                             class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600 gap-2">
                             <button id="btnDecline" data-modal-hide="default-modal" type="button"
-                                class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tiếp tục</button>
+                                class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Ti\u1EBFp t\u1EE5c</button>
                             <button id="btnAccept" data-modal-hide="default-modal" type="button"
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Reset</button>
                         </div>
@@ -104,27 +128,24 @@ document.querySelector("body")!.innerHTML = `
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-12 text-center">
-                    <p class="text-white">Copyright Bối Thạnh @2025</p>
+                    <p class="text-white">Copyright B\u1ED1i Th\u1EA1nh @2025</p>
                 </div>
             </div>
         </div>
-    </footer>`
-
-const btnAccept = document.getElementById('btnAccept') as HTMLElement;
-const btnDecline = document.getElementById('btnDecline') as HTMLElement;
-const btnClose = document.getElementById('btnClose') as HTMLElement;
-const btnXaoTron = document.getElementById('btnXaoTron') as HTMLElement;
-const frmRandom = document.getElementById("frmRandom") as HTMLFormElement;
-const tagP = document.getElementById("modalContent") as HTMLElement;
-const btnTang = document.getElementById("btnTang") as HTMLElement;
-const btnGiam = document.getElementById("btnGiam") as HTMLElement;
-declare var Modal: any;
-import { showNotification } from "./utils";
-const options = {
-    placement: 'center',
-    backdrop: 'dynamic',
-    backdropClasses: 'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
-    closable: true,
+    </footer>`;
+  var btnAccept = document.getElementById("btnAccept");
+  var btnDecline = document.getElementById("btnDecline");
+  var btnClose = document.getElementById("btnClose");
+  var btnXaoTron = document.getElementById("btnXaoTron");
+  var frmRandom = document.getElementById("frmRandom");
+  var tagP = document.getElementById("modalContent");
+  var btnTang = document.getElementById("btnTang");
+  var btnGiam = document.getElementById("btnGiam");
+  var options = {
+    placement: "center",
+    backdrop: "dynamic",
+    backdropClasses: "bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40",
+    closable: true
     // onHide: () => {
     //     console.log('modal is hidden');
     // },
@@ -134,105 +155,90 @@ const options = {
     // onToggle: () => {
     //     console.log('modal has been toggled');
     // }
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-    const modalEl = document.getElementById('default-modal');
+  };
+  document.addEventListener("DOMContentLoaded", () => {
+    const modalEl = document.getElementById("default-modal");
     if (modalEl && Modal) {
-        const modal = new Modal(modalEl, options);
-
-        function getValue() {
-            let textAria = document.getElementById("message") as HTMLInputElement;
-            let values = textAria.value;
-            return values;
+      let getValue2 = function() {
+        let textAria = document.getElementById("message");
+        let values = textAria.value;
+        return values;
+      }, convertData2 = function(str) {
+        let regex = /[\s.,]+/;
+        let convertStr = str.trim().split(regex);
+        return convertStr;
+      }, randomArray2 = function(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      }, shuttfleArr2 = function(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * arr.length);
+          [arr[i], arr[j]] = [arr[j], arr[i]];
         }
-
-        function convertData(str: string) {
-            let regex = /[\s.,]+/;
-            let convertStr = str.trim().split(regex)
-            return convertStr
+        return arr;
+      }, sortIncrease2 = function(arr) {
+        return arr.sort((a, b) => a - b);
+      }, sortDescrease2 = function(arr) {
+        return arr.sort((a, b) => b - a);
+      };
+      var getValue = getValue2, convertData = convertData2, randomArray = randomArray2, shuttfleArr = shuttfleArr2, sortIncrease = sortIncrease2, sortDescrease = sortDescrease2;
+      const modal = new Modal(modalEl, options);
+      frmRandom.onsubmit = function(e) {
+        e.preventDefault();
+        let target = e.target;
+        let textAria = target.querySelector("textarea[id='message']");
+        let values = textAria.value;
+        if (values) {
+          let data = convertData2(values);
+          let result = randomArray2(data);
+          tagP.innerHTML = result;
+          modal.show();
+        } else {
+          showNotification("B\u1EA1n ch\u01B0a nh\u1EADp g\xEC nha ng\u01B0\u1EDDi \u0111\u1EB9p");
         }
-
-        function randomArray(arr: any[]) {
-            return arr[Math.floor(Math.random() * arr.length)]
+      };
+      btnAccept.onclick = () => {
+        let textAria = document.getElementById("message");
+        textAria.value = "";
+        modal.hide();
+      };
+      btnDecline.onclick = () => {
+        modal.hide();
+      };
+      btnClose.onclick = () => {
+        modal.hide();
+      };
+      btnXaoTron.onclick = () => {
+        let data = getValue2();
+        if (data) {
+          let str = "";
+          let dataConverted = convertData2(data);
+          let result = shuttfleArr2(dataConverted).join("\n");
+          tagP.innerHTML = result;
+          modal.show();
+        } else {
+          showNotification("Ch\u01B0a nh\u1EADp m\xE0 \u0111\xE3 mu\u1ED1n tr\u1ED9n r\u1ED3i seo @o@");
         }
-
-        function shuttfleArr(arr: any[]) {
-            for (let i = arr.length - 1; i > 0; i--) {
-                let j = Math.floor(Math.random() * arr.length);
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-            return arr;
+      };
+      btnTang.addEventListener("click", function() {
+        let data = getValue2();
+        if (data) {
+          let dataConverted = sortIncrease2(convertData2(data)).join("\n").trim();
+          tagP.innerHTML = dataConverted;
+          modal.show();
+        } else {
+          showNotification("Ch\u01B0a c\xF3 g\xEC n\xEAn ch\u01B0a s\u1EAFp x\u1EBFp nha n\xED");
         }
-        function sortIncrease(arr: any[]) {
-            return arr.sort((a: number, b: number) => a - b)
+      });
+      btnGiam.addEventListener("click", function() {
+        let data = getValue2();
+        if (data) {
+          let dataConverted = sortDescrease2(convertData2(data)).join("\n").trim();
+          tagP.innerHTML = dataConverted;
+          modal.show();
+        } else {
+          showNotification("Ch\u01B0a c\xF3 g\xEC n\xEAn ch\u01B0a s\u1EAFp x\u1EBFp nha");
         }
-
-        function sortDescrease(arr: any[]) {
-            return arr.sort((a: number, b: number) => b - a)
-        }
-
-        frmRandom.onsubmit = function (e: SubmitEvent) {
-            e.preventDefault();
-            // let value = e.target.value;
-            let target = e.target as HTMLFormElement; // Ép kiểu
-            let textAria = target.querySelector("textarea[id='message']") as HTMLInputElement;
-            let values = textAria.value;
-            if (values) {
-                let data = convertData(values);
-                let result = randomArray(data);
-                tagP.innerHTML = result;
-                modal.show();
-            }
-            else {
-                showNotification("Bạn chưa nhập gì nha người đẹp")
-            }
-        }
-        btnAccept.onclick = () => {
-            let textAria = document.getElementById("message") as HTMLInputElement;
-            textAria.value = "";
-            modal.hide();
-        }
-        btnDecline.onclick = () => {
-            modal.hide();
-        }
-        btnClose.onclick = () => {
-            modal.hide();
-        }
-        btnXaoTron.onclick = () => {
-            let data = getValue();
-            if (data) {
-                let str = "";
-                let dataConverted = convertData(data);
-                let result = shuttfleArr(dataConverted).join("\n");
-                tagP.innerHTML = result;
-                modal.show();
-            }
-            else {
-                showNotification("Chưa nhập mà đã muốn trộn rồi seo @o@")
-            }
-        }
-        btnTang.addEventListener('click', function () {
-            let data = getValue();
-            if (data) {
-                let dataConverted = sortIncrease(convertData(data)).join("\n").trim();
-                tagP.innerHTML = dataConverted;
-                modal.show();
-            }
-            else {
-                showNotification("Chưa có gì nên chưa sắp xếp nha ní")
-            }
-        });
-        btnGiam.addEventListener('click', function () {
-            let data = getValue();
-            if (data) {
-                let dataConverted = sortDescrease(convertData(data)).join("\n").trim();
-                tagP.innerHTML = dataConverted;
-                modal.show();
-            }
-            else {
-                showNotification("Chưa có gì nên chưa sắp xếp nha")
-            }
-        })
+      });
     }
-});
+  });
+})();
