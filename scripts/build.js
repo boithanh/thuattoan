@@ -25,7 +25,7 @@ fs.copySync(path.resolve(__dirname, '../index.html'), path.resolve(__dirname, `.
     recursive: true,
 });
 //manifest.json copy
-fs.copySync(path.resolve(__dirname, '../manifest.json'), path.resolve(__dirname, `../${destFolderName}/manifest.json`), {
+fs.copySync(path.resolve(__dirname, '../site.webmanifest'), path.resolve(__dirname, `../${destFolderName}/site.webmanifest`), {
     overwrite: true,
     errorOnExist: false,
     recursive: true,
