@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npx esbuild ts/* --bundle --outdir=js --platform=browser --watch",
     "sync": "node scripts/build.js",
-    "build": "npx esbuild ts/* --bundle --outdir=obfuscated/js --platform=browser --minify && npx javascript-obfuscator obfuscated/js --output obfuscated/js && npm run sync"
+    "build": "npx esbuild ts/* --bundle --outdir=dist/js --platform=browser --minify && npx javascript-obfuscator dist/js --output dist/js && npm run sync"
   },
   "devDependencies": {
     "esbuild": "^0.25.3",
