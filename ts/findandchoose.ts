@@ -1,9 +1,12 @@
+import { findAndChooseNumber } from "./layout";
+import { showNotification } from "./utils";
+document.querySelector("body")!.innerHTML = findAndChooseNumber;
 let textInput = document.getElementById("message") as HTMLInputElement;
 let textOutput = document.getElementById("result") as HTMLInputElement;
 let textNotExist = document.getElementById("notExist") as HTMLInputElement;
 let selectLoai = document.getElementById("selectLoai") as HTMLInputElement;
 let tableContent = document.querySelector("table") as HTMLElement
-import { showNotification } from "./utils";
+
 
 
 document.getElementById("btnLoc")!.onclick = () => {

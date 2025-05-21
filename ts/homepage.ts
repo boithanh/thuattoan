@@ -1,59 +1,6 @@
+import { home } from "./layout";
 import { showNotification } from "./utils";
-document.querySelector("body")!.innerHTML = `
-<!-- Breadcrumb -->
-<header>
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item active"><span class="ms-1 small fw-medium text-muted md:ms-2">Home</span></li>
-    <li class="breadcrumb-item"><a href="./view/any-random.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Any random</a></li>
-    <li class="breadcrumb-item" aria-current="page"> <a href="./view/find-and-choose-number.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Find & choose number</a></li>
-  </ol>
-</nav>
-</header>
-<main>
-        <section id="numberPanel">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-12">
-                        <div class="number-content"></div>
-                    </div>
-                    <div class="col-12 col-sm-8 col-md-7 col-lg-6 col-xl-5">
-                        <div class="control-panel my-5">
-                            <div class="col-12">
-                                <div class="frmCheckPanel">
-                                    <div class="form-check form-check-inline mb-3">
-                                        <input class="form-check-input" type="radio" name="radioRandom" id="radioMega"
-                                            value="mega" />
-                                        <label class="form-check-label" for="">Mega</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="radioRandom" id="radioPower"
-                                            value="power" />
-                                        <label class="form-check-label" for="">Power</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button id="btnGen" class="btn btn-dark me-2">Lấy số</button>
-                                <button id="btnSort" class="btn btn-info me-2">Sắp xếp</button>
-                                <button id="btnClean" class="btn btn-light me-2">Làm lại</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer-container bg-black py-3">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-12 text-center">
-                    <p class="text-white">Copyright Bối Thạnh @2025</p>
-                </div>
-            </div>
-        </div>
-    </footer>`;
+document.querySelector("body")!.innerHTML = home;
 
 let arrMega = Array.from({ length: 45 }).map((_, i) => i + 1);
 let arrPower = Array.from({ length: 55 }).map((_, i) => i + 1);
