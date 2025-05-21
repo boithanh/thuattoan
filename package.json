@@ -3,14 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "npx esbuild ts/* --bundle --outdir=js --platform=browser --watch",
+    "start": "npx live-server . --port=8080 --no-browser --watch=js,css,html",
+    "typescript": "npx esbuild ts/* --bundle --outdir=js --platform=browser --watch",
+    "sass": "sass sass:css --watch",
+    "dev": "concurrently \"npm run sass\" \"npm run typescript\" \"npm run start\"",
     "sync": "node scripts/build.js",
     "build": "npx esbuild ts/* --bundle --outdir=dist/js --platform=browser --minify && npx javascript-obfuscator dist/js --output dist/js && npm run sync"
   },
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "esbuild": "^0.25.3",
     "fs-extra": "^11.3.0",
     "javascript-obfuscator": "^4.1.1",
+    "live-server": "^1.2.2",
+    "sass": "^1.89.0",
     "typescript": "^5.8.3"
   }
 }

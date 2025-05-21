@@ -21,9 +21,7 @@ b {
 }
 
 body {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 header nav {
@@ -126,4 +124,9 @@ header .breadcrumb-item.active a {
   75% {
     transform: scale(0.9);
   }
-}/*# sourceMappingURL=style.css.map */
+}
+body {
+  color: black;
+}
+
+/*# sourceMappingURL=style.css.map */

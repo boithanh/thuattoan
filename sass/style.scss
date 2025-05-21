@@ -3,3 +3,7 @@
 @use './helper/mixin';
 @use './layout/home';
 @use './layout/any-random';
+
+body {
+    color: black;
+}
