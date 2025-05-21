@@ -174,7 +174,7 @@ export const findAndChooseNumber: string = `<!-- Breadcrumb -->
             aria-label="Breadcrumb">
             <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
                 <li class="inline-flex items-center">
-                    <a href="./index.html"
+                    <a href="./../index.html"
                         class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Home</a>
                     </div>
                 </li>
@@ -207,7 +207,7 @@ export const findAndChooseNumber: string = `<!-- Breadcrumb -->
         <h2 class="text-4xl text-center mb-8">Thống kê lần xuất hiện dựa trên dữ liệu có sẵn</h2>
         <div class="sm:flex justify-center align-items-center mb-5 font-bold gap-10 min-h-screen">
             <div class="max-sm:w-full sm:w-4/12">
-                <h2 class="text-2xl font-semibold">Nhập dãy bạn cần chuyển đổi</h2>
+                <h2 class="text-2xl font-semibold mb-3">Nhập dãy bạn cần chuyển đổi</h2>
                 <label for="message" class="block text-sm font-medium text-gray-900 dark:text-white">Your
                     message</label>
                 <textarea id="message" rows="30"
@@ -215,7 +215,7 @@ export const findAndChooseNumber: string = `<!-- Breadcrumb -->
                     placeholder="Write your thoughts here..."></textarea>
             </div>
             <div class="max-sm:w-full sm:w-4/12">
-                <h2 class="text-2xl font-semibold">Các số xuất hiện</h2>
+                <h2 class="text-2xl font-semibold mb-3">Các số xuất hiện</h2>
                 <label for="message" class="block text-sm font-medium text-gray-900 dark:text-white">Your
                     message</label>
                 <textarea id="result" rows="30"
@@ -223,7 +223,7 @@ export const findAndChooseNumber: string = `<!-- Breadcrumb -->
                     placeholder="Result ->" disabled></textarea>
             </div>
             <div class="max-sm:w-full sm:w-4/12">
-                <h2 class="text-2xl font-semibold">Số không xuất hiện</h2>
+                <h2 class="text-2xl font-semibold mb-3">Số không xuất hiện</h2>
                 <label for="message" class="block text-sm font-medium text-gray-900 dark:text-white">Your
                     message</label>
                 <textarea id="notExist" rows="30"

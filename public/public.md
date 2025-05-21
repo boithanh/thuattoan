@@ -1,1 +1,1 @@
-//this file contain some word for buiding success
+//this file contain some word for building success
