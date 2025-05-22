@@ -1,7 +1,7 @@
 {
   "name": "6/45 Random",
   "short_name": "6/45 Random",
-  "start_url": "/?source=pwa",
+  "start_url": "/",
   "theme_color": "#FADA5A",
   "background_color": "#FADA5A",
   "display": "fullscreen",
