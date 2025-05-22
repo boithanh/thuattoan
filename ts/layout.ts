@@ -98,7 +98,13 @@ export const anyRandom: string = `
                         <textarea id="message" rows="20"
                             class="block p-2.5 mb-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Leave a string which you want..." aria-valuetext=""></textarea>
-                        <div class="text-center mx-auto">
+                        <div class="text-center mx-auto">                    
+  <select id="numbers" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+    <option selected>Chỉ chọn field này khi sử dụng "xem cao thấp"</option>
+    <option value="645">Xem cao thấp theo Mega 6/45</option>
+    <option value="655">Xem cao thấp theo Power 6/55</option>
+  </select>
+
                             <button type="submit"
                                 class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-3 mt-5">Random!!!
                             </button>
@@ -114,6 +120,7 @@ export const anyRandom: string = `
                                 id="btnGiam">Sort
                                 giảm dần</button>
                                 <button id="btnChanLe" type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Xem Chẵn lẻ</button>
+                                <button id="btnHighLow" type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Xem cao thấp</button>
                         </div>
                     </form>
                 </div>

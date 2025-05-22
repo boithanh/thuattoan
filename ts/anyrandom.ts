@@ -1,6 +1,14 @@
 import { anyRandom } from "./layout";
 document.querySelector("body")!.innerHTML = anyRandom
-
+document.getElementById("btnHighLow")?.style.setProperty("display", "none");
+const userSelected = document.getElementById("numbers") as HTMLInputElement;
+if (userSelected) {
+    userSelected.addEventListener("change", function () {
+        if (userSelected.value === "655" || userSelected.value === "645") {
+            document.getElementById("btnHighLow")?.style.setProperty("display", "inline-block");
+        }
+    })
+}
 const btnAccept = document.getElementById('btnAccept') as HTMLElement;
 const btnDecline = document.getElementById('btnDecline') as HTMLElement;
 const btnClose = document.getElementById('btnClose') as HTMLElement;
@@ -129,26 +137,77 @@ document.addEventListener("DOMContentLoaded", () => {
             let data = getValue();
             if (data) {
                 let dataConverted = convertData(data);
-                console.log(dataConverted);
+                // console.log(dataConverted);
                 let even: string = "";
-                let odd: string = ""
+                let odd: string = "";
+                let demChan = 0;
+                let demLe = 0;
                 for (let num of dataConverted) {
                     if (Number(num) % 2 === 0) {
-                        even += "- ";
+                        even += " - ";
+                        demChan++;
                     }
                     else {
-                        odd += "+ ";
+                        odd += " + ";
+                        demLe++;
                     }
                 }
                 // let even = dataConverted.filter((item: any) => item % 2 === 0).join("\n").trim();
                 // let odd = dataConverted.filter((item: any) => item % 2 !== 0).join("\n").trim();
                 tagP.innerHTML = dataConverted.join(" ").trim();
                 tagP.innerHTML += "\n" + even + odd;
+                tagP.innerHTML += "\n" + "Nhận xét: " + demChan + "(chẵn)" + " - " + demLe + "(lẻ)";
                 modal.show();
             }
             else {
                 showNotification("Bạn phải nhập trước khi xem template chẵn lẻ nha")
             }
+        })
+
+
+        document.getElementById("btnHighLow")?.addEventListener('click', function () {
+            let data = getValue();
+            if (data) {
+                let dataConverted = convertData(data);
+                let demCao = 0;
+                let demThap = 0;
+                if (userSelected.value === "645") {
+                    let high = dataConverted.filter((item: any) => {
+                        if (Number(item) >= 23) {
+                            demCao++;
+                            return item;
+                        }
+                    }
+                    ).join(" ").trim();
+                    let low = dataConverted.filter((item: any) => {
+                        if (Number(item) < 23) {
+                            demThap++;
+                            return item;
+                        }
+                    }).join(" ").trim();
+                    tagP.innerHTML = "Các số cao:" + high + "\n" + "Các số thấp:" + low + "\n" + "Template: " + demCao + "(cao)" + "-" + demThap + "(thấp)";
+                    modal.show();
+
+                }
+                else if (userSelected.value === "655") {
+                    let high = dataConverted.filter((item: any) => {
+                        if (Number(item) >= 28) {
+                            demCao++;
+                            return item;
+                        }
+                    }
+                    ).join(" ").trim();
+                    let low = dataConverted.filter((item: any) => {
+                        if (Number(item) < 28) {
+                            demThap++;
+                            return item;
+                        }
+                    }).join(" ").trim();
+                    tagP.innerHTML = "Các số cao: " + high + "\n" + "Các số thấp: " + low + "\n" + "Template: " + demCao + "(cao)" + "-" + demThap + "(thấp)";
+                    modal.show();
+                }
+            }
+
         })
     }
 });
