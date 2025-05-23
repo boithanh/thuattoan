@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let dataConverted = convertData(data);
                 let demCao = 0;
                 let demThap = 0;
-                if (userSelected.value === "645") {
+                if (userSelected?.value === "645") {
                     let high = dataConverted.filter((item: any) => {
                         if (Number(item) >= 23) {
                             demCao++;
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     modal.show();
 
                 }
-                else if (userSelected.value === "655") {
+                else if (userSelected?.value === "655") {
                     let high = dataConverted.filter((item: any) => {
                         if (Number(item) >= 28) {
                             demCao++;
@@ -207,7 +207,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     modal.show();
                 }
             }
-
         })
     }
 });
