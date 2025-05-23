@@ -1,7 +1,7 @@
 export const home: string = `
 <!-- Breadcrumb -->
 <header>
-<nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb" class="pt-5">
   <ol class="breadcrumb">
     <li class="breadcrumb-item active"><span class="ms-1 small fw-medium text-muted md:ms-2">Home</span></li>
     <li class="breadcrumb-item"><a href="./view/any-random.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Any random</a></li>
