@@ -29,6 +29,11 @@ header nav {
   padding: 15px;
   line-height: 30px;
 }
+@media screen and (max-width: 577px) {
+  header nav {
+    padding-top: 20px;
+  }
+}
 header nav li a,
 header nav li span {
   color: #999685;
