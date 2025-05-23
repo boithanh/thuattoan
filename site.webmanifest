@@ -2,8 +2,8 @@
   "name": "6/45 Random",
   "short_name": "6/45 Random",
   "start_url": "/",
-  "theme_color": "#FADA5A",
-  "background_color": "#FADA5A",
+  "theme_color": "#1E2939",
+  "background_color": "#1E2939",
   "display": "fullscreen",
   "orientation": "portrait",
   "icons": [
