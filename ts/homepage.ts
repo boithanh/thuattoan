@@ -1,10 +1,11 @@
 import { home } from "./layout";
 import { showNotification } from "./utils";
 document.querySelector("body")!.innerHTML = home;
-
-let arrMega = Array.from({ length: 45 }).map((_, i) => i + 1);
-let arrPower = Array.from({ length: 55 }).map((_, i) => i + 1);
-let arrChoose: number[] = []
+const arrMega: number[] = Array.from({ length: 45 }).map((_, i) => i + 1);
+const arrPower: number[] = Array.from({ length: 55 }).map((_, i) => i + 1);
+let arrChoose: number[] = [];
+let newArrMega = [...arrMega];
+let newArrPower = [...arrPower];
 let resultPanel = document.querySelector(".number-content") as HTMLElement;
 let radios = document.querySelectorAll('input[name="radioRandom"]') as NodeListOf<HTMLInputElement>;
 let soLan: number = 0;
@@ -49,9 +50,12 @@ function colorCheck(number: number) {
 function sapXep(arr: number[] = [...arrChoose]) {
     return arr.sort((a: number, b: number): number => a - b);
 }
-function randomMega(arr = arrMega) {
+
+function randomMega(arr = newArrMega) {
     if (soLan >= 6) return;
-    let num = randomNoDuplicate();
+
+    let num = Math.floor(Math.random() * arr.length);
+    console.log(num);
 
     let index = arr.findIndex((item, index) => {
         return item === num;
@@ -64,7 +68,7 @@ function randomMega(arr = arrMega) {
     }
 }
 
-function randomPower(arr = arrPower) {
+function randomPower(arr = newArrPower) {
     if (soLan >= 6) return;
     let num = randomNoDuplicate(55);
     let index = arr.findIndex((item, index) => {
@@ -131,6 +135,8 @@ btnClean.onclick = function () {
     resultPanel.replaceChildren();
     showNotification("Clean xong, mời bạn nhấn 'Lấy số'", 1000, { background: "linear-gradient(to right, #fdfcfb, #e2d1c3)", color: "black" })
     arrChoose = [];
+    newArrMega = [...arrMega];
+    newArrPower = [...arrPower];
     soLan = 0;
     radios.forEach((radio) => {
         radio.checked = false
