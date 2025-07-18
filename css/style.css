@@ -24,25 +24,25 @@ body {
   user-select: none;
 }
 
-header nav {
+header.Home nav {
   background-color: #1e2939;
   padding: 15px;
   line-height: 30px;
 }
-header nav li a,
-header nav li span {
+header.Home nav li a,
+header.Home nav li span {
   color: #999685;
   font-size: 14px;
 }
-header .breadcrumb {
+header.Home .breadcrumb {
   margin-bottom: 0;
 }
-header .breadcrumb-item + .breadcrumb-item::before {
+header.Home .breadcrumb-item + .breadcrumb-item::before {
   content: " > ";
   color: white;
 }
-header .breadcrumb-item.active span,
-header .breadcrumb-item.active a {
+header.Home .breadcrumb-item.active span,
+header.Home .breadcrumb-item.active a {
   color: white !important;
 }
 
@@ -125,6 +125,32 @@ header .breadcrumb-item.active a {
     transform: scale(0.9);
   }
 }
+header.anyRandom nav,
+header.choose nav {
+  background-color: #1e2939;
+  padding: 15px;
+  line-height: 30px;
+}
+header.anyRandom nav .breadcrumb,
+header.choose nav .breadcrumb {
+  margin-bottom: 0;
+}
+header.anyRandom nav .breadcrumb-item + .breadcrumb-item::before,
+header.choose nav .breadcrumb-item + .breadcrumb-item::before {
+  content: " > ";
+  color: white;
+}
+header.anyRandom nav .breadcrumb-item,
+header.choose nav .breadcrumb-item {
+  color: white !important;
+}
+header.anyRandom nav .breadcrumb-item.active span,
+header.anyRandom nav .breadcrumb-item.active a,
+header.choose nav .breadcrumb-item.active span,
+header.choose nav .breadcrumb-item.active a {
+  color: white !important;
+}
+
 body {
   color: black;
 }

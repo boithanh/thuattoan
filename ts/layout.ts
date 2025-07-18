@@ -1,14 +1,8 @@
+import navigation from "./navigation";
+
 export const home: string = `
 <!-- Breadcrumb -->
-<header>
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item active"><span class="ms-1 small fw-medium text-muted md:ms-2">Home</span></li>
-    <li class="breadcrumb-item"><a href="./view/any-random.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Any random</a></li>
-    <li class="breadcrumb-item" aria-current="page"> <a href="./view/find-and-choose-number.html" class="ms-1 small fw-medium text-secondary text-decoration-none hover:text-primary md:ms-2">Find & choose number</a></li>
-  </ol>
-</nav>
-</header>
+${navigation(null, "./view/any-random.html", "./view/find-and-choose-number.html")}
 <main>
         <section id="numberPanel">
             <div class="container">
@@ -56,36 +50,7 @@ export const home: string = `
 
 
 export const anyRandom: string = `
-    <header>
-            <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
-                aria-label="Breadcrumb">
-                <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-                    <li class="inline-flex items-center">
-                        <a href="./../index.html"
-                            class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Home</a>
-                    </li>
-                    <li>
-                        <div class="flex items-center">
-                            <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-white " aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 9 4-4-4-4" />
-                            </svg>
-                            <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Any random</span>
-                        </div>
-                    </li>
-                    <li aria-current="page">
-                        <div class="flex items-center">
-                            <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 9 4-4-4-4" />
-                            </svg>
-                           <a href="./find-and-choose-number.html" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Find & choose number</a>
-                    </li>
-                </ol>
-            </nav>
-        </header>
+${navigation("./../index.html", null, "./find-and-choose-number.html")}
     <main>
             <section class="any-random py-10 min-h-screen">
                 <div class="container mx-auto px-3">
@@ -175,41 +140,8 @@ export const anyRandom: string = `
             </div>
         </footer>`;
 
-export const findAndChooseNumber: string = `<!-- Breadcrumb -->
-    <header>
-        <nav class="flex px-5 py-3 text-gray-700 border border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
-            aria-label="Breadcrumb">
-            <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-                <li class="inline-flex items-center">
-                    <a href="./../index.html"
-                        class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Home</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="flex items-center">
-                        <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-gray-400 " aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 9 4-4-4-4" />
-                        </svg>
-                        <a href="./any-random.html"
-                            class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Any
-                            random</a>
-                    </div>
-                </li>
-                <li aria-current="page">
-                    <div class="flex items-center">
-                        <svg class="rtl:rotate-180  w-3 h-3 mx-1 text-gray-400" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 9 4-4-4-4" />
-                        </svg>
-                        <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Find & choose
-                            number</span>
-                </li>
-            </ol>
-        </nav>
-    </header>
+export const findAndChooseNumber: string = `
+${navigation("./../index.html", "./any-random.html", null)}
     <div class="container mx-auto mt-6 px-10">
         <h2 class="text-4xl text-center mb-8">Thống kê lần xuất hiện dựa trên dữ liệu có sẵn</h2>
         <div class="sm:flex justify-center align-items-center mb-5 font-bold gap-10 min-h-screen">

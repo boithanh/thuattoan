@@ -1,34 +1,36 @@
 header {
-    nav {
-        background-color: #1e2939;
-        padding: 15px;
-        line-height: 30px;
+    &.Home {
+        nav {
+            background-color: #1e2939;
+            padding: 15px;
+            line-height: 30px;
 
-        li {
+            li {
 
-            a,
-            span {
-                color: #999685;
-                font-size: 14px;
+                a,
+                span {
+                    color: #999685;
+                    font-size: 14px;
+                }
             }
         }
-    }
 
-    .breadcrumb {
-        margin-bottom: 0;
+        .breadcrumb {
+            margin-bottom: 0;
 
-    }
+        }
 
-    .breadcrumb-item+.breadcrumb-item::before {
-        content: " > ";
-        color: white;
-    }
+        .breadcrumb-item+.breadcrumb-item::before {
+            content: " > ";
+            color: white;
+        }
 
-    .breadcrumb-item.active {
+        .breadcrumb-item.active {
 
-        span,
-        a {
-            color: white !important;
+            span,
+            a {
+                color: white !important;
+            }
         }
     }
 }
