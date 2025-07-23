@@ -1,49 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-span,
-a,
-pre,
-i,
-b {
-  margin: 0;
-  padding: 0;
-}
-
+@charset "UTF-8";
 body {
   user-select: none;
-}
-
-header.Home nav {
-  background-color: #1e2939;
-  padding: 15px;
-  line-height: 30px;
-}
-header.Home nav li a,
-header.Home nav li span {
-  color: #999685;
-  font-size: 14px;
-}
-header.Home .breadcrumb {
-  margin-bottom: 0;
-}
-header.Home .breadcrumb-item + .breadcrumb-item::before {
-  content: " > ";
-  color: white;
-}
-header.Home .breadcrumb-item.active span,
-header.Home .breadcrumb-item.active a {
-  color: white !important;
 }
 
 #numberPanel {
@@ -78,7 +35,6 @@ header.Home .breadcrumb-item.active a {
   width: 100px;
   font-size: 3rem;
   border-radius: 100%;
-  background-color: red;
   text-align: center;
   display: inline-block;
   line-height: 5.5rem;
@@ -125,32 +81,103 @@ header.Home .breadcrumb-item.active a {
     transform: scale(0.9);
   }
 }
-header.anyRandom nav,
-header.choose nav {
-  background-color: #1e2939;
-  padding: 15px;
-  line-height: 30px;
-}
-header.anyRandom nav .breadcrumb,
-header.choose nav .breadcrumb {
-  margin-bottom: 0;
-}
-header.anyRandom nav .breadcrumb-item + .breadcrumb-item::before,
-header.choose nav .breadcrumb-item + .breadcrumb-item::before {
-  content: " > ";
-  color: white;
-}
-header.anyRandom nav .breadcrumb-item,
-header.choose nav .breadcrumb-item {
-  color: white !important;
-}
-header.anyRandom nav .breadcrumb-item.active span,
-header.anyRandom nav .breadcrumb-item.active a,
-header.choose nav .breadcrumb-item.active span,
-header.choose nav .breadcrumb-item.active a {
-  color: white !important;
+.marble {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transform: scale(0.8);
+  box-shadow: inset 10px -10px 50px rgba(255, 255, 255, 0.8), inset -20px 20px 40px rgba(0, 10, 30, 0.4), 0 0 50px rgba(0, 150, 255, 0.2);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9) 0%, rgba(230, 240, 255, 0.7) 5%, rgba(180, 210, 255, 0.4) 15%, rgba(100, 160, 230, 0.2) 30%, transparent 50%);
+  overflow: hidden;
+  display: inline-block;
 }
 
+/* Lớp khúc xạ bên trong */
+.marble::before {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: radial-gradient(circle at 40% 40%, rgba(200, 230, 255, 0.15) 0%, rgba(100, 170, 255, 0.1) 10%, transparent 40%);
+  border-radius: 45%;
+  transform: rotate(45deg);
+  animation: rotate 20s linear infinite;
+}
+
+/* Hiệu ứng phản chiếu */
+.marble::after {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 20%;
+  height: 20%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.7) 30%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+/* Điểm sáng chính */
+.highlight {
+  position: absolute;
+  top: 12%;
+  left: 25%;
+  width: 15%;
+  height: 15%;
+  background: white;
+  border-radius: 50%;
+  filter: blur(1px);
+  box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8);
+  z-index: 10;
+}
+
+/* Ánh sáng tán xạ */
+.caustics {
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(100, 180, 255, 0.1) 0%, transparent 70%);
+  filter: blur(10px);
+  transform: rotate(20deg);
+  animation: pulse1 6s ease-in-out infinite;
+}
+
+/* Hiệu ứng bóng đổ */
+.shadow {
+  position: absolute;
+  bottom: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 30%;
+  background: radial-gradient(ellipse at center, rgba(0, 20, 40, 0.6) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+/* Animation */
+@keyframes rotate {
+  100% {
+    transform: rotate(405deg);
+  }
+}
+@keyframes pulse1 {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1) rotate(20deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2) rotate(25deg);
+  }
+}
 body {
   color: black;
 }

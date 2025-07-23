@@ -1,3 +1,4 @@
+import footer from "./footer";
 import navigation from "./navigation";
 
 export const home: string = `
@@ -5,48 +6,61 @@ export const home: string = `
 ${navigation(null, "./view/any-random.html", "./view/find-and-choose-number.html")}
 <main>
         <section id="numberPanel">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-12">
-                        <div class="number-content"></div>
-                    </div>
-                    <div class="col-12 col-sm-8 col-md-7 col-lg-6 col-xl-5">
-                        <div class="control-panel my-5">
-                            <div class="col-12">
-                                <div class="frmCheckPanel">
-                                    <div class="form-check form-check-inline mb-3">
-                                        <input class="form-check-input" type="radio" name="radioRandom" id="radioMega"
-                                            value="mega" />
-                                        <label class="form-check-label" for="">Mega</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="radioRandom" id="radioPower"
-                                            value="power" />
-                                        <label class="form-check-label" for="">Power</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button id="btnGen" class="btn btn-dark me-2">Lấy số</button>
-                                <button id="btnSort" class="btn btn-info me-2">Sắp xếp</button>
-                                <button id="btnClean" class="btn btn-light me-2">Làm lại</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col items-center justify-center">
+      <div class="w-full">
+        <div class="number-content"></div>
+      </div>
+      <div class="w-full sm:w-4/5 md:w-7/12 lg:w-1/2 xl:w-2/5">
+        <div class="control-panel my-5">
+          <div class="w-full">
+            <div class="frmCheckPanel">
+              <div class="form-check inline-flex items-center mb-3 mr-3">
+                <input
+                  class="form-check-input mr-2"
+                  type="radio"
+                  name="radioRandom"
+                  id="radioMega"
+                  value="mega"
+                />
+                <label class="form-check-label" for="">Mega</label>
+              </div>
+              <div class="form-check inline-flex items-center mr-3">
+                <input
+                  class="form-check-input mr-2"
+                  type="radio"
+                  name="radioRandom"
+                  id="radioPower"
+                  value="power"
+                />
+                <label class="form-check-label" for="">Power</label>
+              </div>
+              <div class="form-check inline-flex items-center">
+                <input
+                  class="form-check-input mr-2"
+                  type="radio"
+                  name="radioRandom"
+                  id="radioLoto"
+                  value="loto"
+                />
+                <label class="form-check-label" for="">Loto</label>
+              </div>
             </div>
-        </section>
-    </main>
-
-    <footer class="footer-container bg-black py-3">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-12 text-center">
-                    <p class="text-white">Copyright Bối Thạnh @2025</p>
-                </div>
-            </div>
+          </div>
+          <div class="w-full mt-4 space-x-2">
+            <button id="btnGen" class="btn bg-black text-white px-4 py-2">Lấy số</button>
+            <button id="btnSort" class="btn bg-blue-500 text-white px-4 py-2">Sắp xếp</button>
+            <button id="btnClean" class="btn bg-gray-200 text-black px-4 py-2">Làm lại</button>
+          </div>
         </div>
-    </footer>`;
+      </div>
+    </div>
+  </div>
+</section>
+
+    </main>
+    ${footer()}
+    `;
 
 
 export const anyRandom: string = `
@@ -57,7 +71,7 @@ ${navigation("./../index.html", null, "./find-and-choose-number.html")}
                     <h1 class="mb-4 text-2xl font-extrabold text-gray-900 md:text-5xl lg:text-3xl text-center"><span
                             class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Nhập
                             chuỗi </span>mà bạn muốn random</h1>
-                    <form class="max-w-sm mx-auto" id="frmRandom">
+                    <form class="max-w-md mx-auto" id="frmRandom">
                         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                             message</label>
                         <textarea id="message" rows="20"
@@ -130,15 +144,8 @@ ${navigation("./../index.html", null, "./find-and-choose-number.html")}
                 </div>
             </section>
         </main>
-         <footer class="footer-container bg-black py-3">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-xl-12 text-center">
-                        <p class="text-white">Copyright Bối Thạnh @2025</p>
-                    </div>
-                </div>
-            </div>
-        </footer>`;
+        ${footer()}
+        `;
 
 export const findAndChooseNumber: string = `
 ${navigation("./../index.html", "./any-random.html", null)}
@@ -194,12 +201,5 @@ ${navigation("./../index.html", "./any-random.html", null)}
             </div>
         </div>
     </div>
-    <footer class="footer-container bg-black py-3">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xl-12 text-center">
-                    <p class="text-white">Copyright Bối Thạnh @2025</p>
-                </div>
-            </div>
-        </div>
-    </footer>`;
+  ${footer()}
+    `;

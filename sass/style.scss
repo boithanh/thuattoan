@@ -1,8 +1,7 @@
-@use './base/reset';
 @use './base/custom';
 @use './helper/mixin';
 @use './layout/home';
-@use './layout/otherPage';
+@use './layout//marbleAnimation';
 
 body {
     color: black;
