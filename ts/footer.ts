@@ -3,7 +3,7 @@ const footer = () => {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-12 text-center">
-                        <p class="text-white">Copyright Bối Thạnh @2025</p>
+                        <p class="text-white">Bối Thạnh ©${new Date().getFullYear()}</p>
                     </div>
                 </div>
             </div>
