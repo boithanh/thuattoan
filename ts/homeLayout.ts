@@ -4,7 +4,7 @@ import navigation from "./navigation"
 
 const homeLayout = () => {
     return `
-    ${navigation(null, "./view/any-random.html", "./view/find-and-choose-number.html")};
+    ${navigation(null, "./view/any-random.html", "./view/find-and-choose-number.html")}
     ${mainHome()}
     ${footer()}
     `

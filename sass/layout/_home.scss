@@ -1,14 +1,9 @@
 #numberPanel {
     min-height: 100vh;
-    padding-top: 200px;
+    padding-top: 50px;
     margin: 0 auto;
     text-align: center;
     background: url("./../../image/pattern.png");
-
-    @media screen and (max-width:577px) {
-        padding-top: 100px;
-        // min-height: 100%;
-    }
 
 
     .container {
@@ -49,7 +44,7 @@
             @media screen and (max-width:577px) {
                 width: 50px;
                 height: 50px;
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 line-height: 2.75rem;
 
             }

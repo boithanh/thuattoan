@@ -1,7 +1,12 @@
+import toggle from "./toggle";
+
 const mainHome = () => `<main>
         <section id="numberPanel">
   <div class="container mx-auto px-4">
     <div class="flex flex-col items-center justify-center">
+    <div class="w-full">
+    ${toggle("dark", "Dark Mode")}
+    </div>
       <div class="w-full">
         <div class="number-content"></div>
       </div>

@@ -1,6 +1,8 @@
 import { home } from "./layout";
 import { showNotification } from "./utils";
-document.querySelector("body")!.innerHTML = home;
+const body = document.querySelector("body") as HTMLBodyElement;
+body.innerHTML = home;
+export const toggled = document.getElementById("toggle") as HTMLInputElement;
 const arrMega: number[] = Array.from({ length: 45 }).map((_, i) => i + 1);
 const arrPower: number[] = Array.from({ length: 55 }).map((_, i) => i + 1);
 const arrLoto: number[] = Array.from({ length: 35 }).map((_, i) => i + 1);
@@ -9,19 +11,78 @@ let specialChoosed: number | null = null;
 let newArrMega = [...arrMega];
 let newArrPower = [...arrPower];
 let newArrLoto = [...arrLoto];
-
 let resultPanel = document.querySelector(".number-content") as HTMLElement;
 let radios = document.querySelectorAll('input[name="radioRandom"]') as NodeListOf<HTMLInputElement>;
 let soLan: number = 0;
 
-function renderP(number: number, kind?: string | null) {
-    return kind === "mega" || kind === "power"
-        ? `<p class="animate__animated animate__fadeInRight pulse ${colorCheck(number)}">${number > 0 && number <= 9 ? '0' + number : number}</p>`
-        : kind === "loto" ? `<p class="animate__animated animate__fadeInRight pulse bg-lime-400">${number > 0 && number <= 9 ? '0' + number : number}</p>`
-            : `<span class="border-1 border-black inline-block h-[100px] absolute"></span><p class="animate__animated animate__fadeInRight pulse border-1 bg-red-800 text-white">${number > 0 && number <= 9 ? '0' + number : number}</p>`
+if (toggled) {
+    toggled.onchange = () => {
+        if (toggled.checked) {
+            body.classList.toggle("dark");
+        }
+        else {
+            body.classList.toggle("dark");
+        }
+    }
 }
 
-function colorCheck(number: number) {
+function renderBallDefault(number: number, kind?: string | null) {
+    return kind === "mega" || kind === "power"
+        ? `<p class="animate__animated animate__fadeInRight pulse ${colorCheckDefault(number)}">${number > 0 && number <= 9 ? '0' + number : number}</p>`
+        : kind === "loto" ? `<p class="animate__animated animate__fadeInRight pulse bg-lime-400">${number > 0 && number <= 9 ? '0' + number : number}</p>`
+            : `<span class="border-1 border-black inline-block min-[768px]:h-[100px] max-[430px]:h-[50px] absolute"></span><p class="animate__animated animate__fadeInRight pulse border-1 bg-red-800 text-white">${number > 0 && number <= 9 ? '0' + number : number}</p>`
+}
+
+function renderBallDarkMode(number: number, kind?: string | null) {
+    return kind === "mega" || kind === "power"
+        ? `<div class="marble ${colorCheckDarkMode(number)}">
+        <div class="highlight"></div>
+        <div class="caustics caustics-glass"></div>
+        <div class="shadow shadow-glass"></div>
+         <div class="flex! items-center justify-center h-full"> ${number > 0 && number <= 9 ? '0' + number : number} </div>
+        </div>`
+        : kind === "loto" ? `<div class="marble">
+         <div class="highlight"></div>
+        <div class="caustics caustics-glass"></div>
+        <div class="shadow shadow-glass"></div>
+        <div class="flex! items-center justify-center h-full">${number > 0 && number <= 9 ? '0' + number : number}</div>
+        </div>`
+            : `<span class="border-1 border-black inline-block h-[100px] absolute"></span>
+            <div class="marble">
+             <div class="highlight"></div>
+        <div class="caustics caustics-glass"></div>
+        <div class="shadow shadow-glass"></div>
+           <div class="flex! items-center justify-center h-full"> ${number > 0 && number <= 9 ? '0' + number : number}</div>
+            </div>`
+}
+
+function colorCheckDarkMode(number: number) {
+    switch (true) {
+        case (number >= 1 && number <= 9): {
+            return 'glass';
+        }
+        case (number >= 10 && number <= 19): {
+            return 'red-glass';
+        }
+        case (number >= 20 && number <= 29): {
+            return 'glass';
+        }
+        case (number >= 30 && number <= 39): {
+            return 'glass';
+        }
+        case (number >= 40 && number <= 49): {
+            return 'glass';
+        }
+        case (number >= 50 && number <= 55): {
+            return 'glass';
+        }
+        default: {
+            return 'glass'
+        }
+    }
+}
+
+function colorCheckDefault(number: number) {
     switch (true) {
         case (number >= 1 && number <= 9): {
             return 'bg-red-500 text-white';
@@ -57,7 +118,13 @@ function generateMegaOrPower(arr: number[], kind?: string | null) {
         return i === num;
     })
     if (index != -1) {
-        resultPanel.innerHTML += renderP(arr[index], kind);
+        if (toggled.checked) {
+            resultPanel.innerHTML += renderBallDarkMode(arr[index], kind);
+        }
+        else {
+            resultPanel.innerHTML += renderBallDefault(arr[index], kind);
+        }
+
         arrChoose.push(arr[index]);
         arr.splice(index, 1);
         soLan += 1;
@@ -76,7 +143,13 @@ function generateLoto(arrMain: number[], kind?: string | null) {
             return i === num
         });
         if (index != 1) {
-            resultPanel.innerHTML += renderP(arrMain[index], kind)
+            if (toggled.checked) {
+                resultPanel.innerHTML += renderBallDarkMode(arrMain[index], kind)
+            }
+            else {
+                resultPanel.innerHTML += renderBallDefault(arrMain[index], kind)
+            }
+
             arrChoose.push(arrMain[index])
             arrMain.splice(index, 1);
             soLan += 1;
@@ -84,7 +157,13 @@ function generateLoto(arrMain: number[], kind?: string | null) {
     }
     else {
         specialChoosed = generateSpecial();
-        resultPanel.innerHTML += renderP(specialChoosed);
+        if (toggled.checked) {
+            resultPanel.innerHTML += renderBallDarkMode(specialChoosed!);
+
+        }
+        else {
+            resultPanel.innerHTML += renderBallDefault(specialChoosed!);
+        }
         soLan += 1
     }
 
@@ -140,13 +219,27 @@ btnSort.onclick = function () {
     let arrSorted = sapXep();
     let string = "";
     for (let item of arrSorted) {
-        string += renderP(item, selected)
+        if (toggled.checked) {
+            string += renderBallDarkMode(item, selected)
+
+        }
+        else {
+            string += renderBallDefault(item, selected)
+        }
+
     }
     if (string) {
         if (selected === "mega" || selected == "power") { resultPanel.innerHTML = string; }
         else {
             resultPanel.innerHTML = string;
-            resultPanel.innerHTML += renderP(specialChoosed!);
+            if (toggled.checked) {
+                resultPanel.innerHTML += renderBallDarkMode(specialChoosed!);
+
+            }
+            else {
+                resultPanel.innerHTML += renderBallDefault(specialChoosed!);
+            }
+
         }
         showNotification("Sắp xếp suôn sẻ", 3000, { background: "linear-gradient(to right, #eea2a2, #bbc1bf, #57c6e1, #b49fda, #7ac5d8)", color: "white" })
     }
@@ -165,3 +258,6 @@ btnClean.onclick = function () {
     selected = null;
     currentOption = null;
 };
+
+
+
