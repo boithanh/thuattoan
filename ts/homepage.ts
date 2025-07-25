@@ -2,7 +2,7 @@ import { home } from "./layout";
 import { showNotification } from "./utils";
 const body = document.querySelector("body") as HTMLBodyElement;
 body.innerHTML = home;
-export const toggled = document.getElementById("toggle") as HTMLInputElement;
+const toggled = document.getElementById("toggle") as HTMLInputElement;
 const arrMega: number[] = Array.from({ length: 45 }).map((_, i) => i + 1);
 const arrPower: number[] = Array.from({ length: 55 }).map((_, i) => i + 1);
 const arrLoto: number[] = Array.from({ length: 35 }).map((_, i) => i + 1);
@@ -15,16 +15,19 @@ let resultPanel = document.querySelector(".number-content") as HTMLElement;
 let radios = document.querySelectorAll('input[name="radioRandom"]') as NodeListOf<HTMLInputElement>;
 let soLan: number = 0;
 
-if (toggled) {
-    toggled.onchange = () => {
-        if (toggled.checked) {
-            body.classList.toggle("dark");
-        }
-        else {
-            body.classList.toggle("dark");
-        }
+toggled.onchange = () => {
+    if (toggled.checked) {
+        document.documentElement.classList.add("dark");
+        document.getElementById("toggleLabel")?.classList.add("text-white");
+    } else {
+        document.documentElement.classList.remove("dark");
+        document.getElementById("toggleLabel")?.classList.remove("text-white");
     }
 }
+
+
+
+
 
 function renderBallDefault(number: number, kind?: string | null) {
     return kind === "mega" || kind === "power"
@@ -34,50 +37,63 @@ function renderBallDefault(number: number, kind?: string | null) {
 }
 
 function renderBallDarkMode(number: number, kind?: string | null) {
+    const marbleCssClass = colorCheckDarkMode(number);
+    const { marbleGlass, causticsGlass, shadowGlass } = marbleCssClass;
     return kind === "mega" || kind === "power"
-        ? `<div class="marble ${colorCheckDarkMode(number)}">
+        ? `<div class="marble ${marbleGlass}">
         <div class="highlight"></div>
-        <div class="caustics caustics-glass"></div>
-        <div class="shadow shadow-glass"></div>
+        <div class="caustics ${causticsGlass}"></div>
+        <div class="shadow ${shadowGlass}"></div>
          <div class="flex! items-center justify-center h-full"> ${number > 0 && number <= 9 ? '0' + number : number} </div>
         </div>`
         : kind === "loto" ? `<div class="marble">
          <div class="highlight"></div>
-        <div class="caustics caustics-glass"></div>
-        <div class="shadow shadow-glass"></div>
+        <div class="caustics"></div>
+        <div class="shadow shadow-white-glass"></div>
         <div class="flex! items-center justify-center h-full">${number > 0 && number <= 9 ? '0' + number : number}</div>
         </div>`
-            : `<span class="border-1 border-black inline-block h-[100px] absolute"></span>
-            <div class="marble">
+            : `<span class="border-1 border-black inline-block min-[768px]:h-[160px] max-[430px]:h-[100px] absolute"></span>
+            <div class="marble black-glass">
              <div class="highlight"></div>
-        <div class="caustics caustics-glass"></div>
-        <div class="shadow shadow-glass"></div>
+        <div class="caustics"></div>
+        <div class="shadow shadow-black-glass"></div>
            <div class="flex! items-center justify-center h-full"> ${number > 0 && number <= 9 ? '0' + number : number}</div>
             </div>`
 }
 
 function colorCheckDarkMode(number: number) {
+    let marbleCssClass: Record<string, string> = {
+        marbleGlass: "",
+        causticsGlass: "",
+        shadowGlass: ""
+    };
     switch (true) {
         case (number >= 1 && number <= 9): {
-            return 'glass';
+            marbleCssClass = { ...marbleCssClass, marbleGlass: "red-glass", causticsGlass: "caustics-red-glass", shadowGlass: "shadow-red-glass" }
+            return marbleCssClass;
         }
         case (number >= 10 && number <= 19): {
-            return 'red-glass';
+            marbleCssClass = { ...marbleCssClass, marbleGlass: "orange-glass", causticsGlass: "caustics-orange-glass", shadowGlass: "shadow-orange-glass" }
+            return marbleCssClass;
         }
         case (number >= 20 && number <= 29): {
-            return 'glass';
+            marbleCssClass = { ...marbleCssClass, marbleGlass: "green-glass", causticsGlass: "caustics-green-glass", shadowGlass: "shadow-green-glass" }
+            return marbleCssClass;
         }
         case (number >= 30 && number <= 39): {
-            return 'glass';
+            marbleCssClass = { ...marbleCssClass, marbleGlass: "blue-glass", causticsGlass: "caustics-blue-glass", shadowGlass: "shadow-blue-glass" }
+            return marbleCssClass;
         }
         case (number >= 40 && number <= 49): {
-            return 'glass';
+            marbleCssClass = { ...marbleCssClass, marbleGlass: "purple-glass", causticsGlass: "caustics-purple-glass", shadowGlass: "shadow-purple-glass" }
+            return marbleCssClass;
         }
         case (number >= 50 && number <= 55): {
-            return 'glass';
+            marbleCssClass = { ...marbleCssClass, marbleGlass: "yellow-glass", causticsGlass: "caustics-yellow-glass", shadowGlass: "shadow-yellow-glass" }
+            return marbleCssClass;
         }
         default: {
-            return 'glass'
+            return marbleCssClass;
         }
     }
 }
