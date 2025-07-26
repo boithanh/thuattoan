@@ -16,6 +16,7 @@ let radios = document.querySelectorAll('input[name="radioRandom"]') as NodeListO
 let soLan: number = 0;
 
 toggled.onchange = () => {
+    clean();
     if (toggled.checked) {
         document.documentElement.classList.add("dark");
         document.getElementById("toggleLabel")?.classList.add("text-white");
@@ -23,10 +24,8 @@ toggled.onchange = () => {
         document.documentElement.classList.remove("dark");
         document.getElementById("toggleLabel")?.classList.remove("text-white");
     }
+
 }
-
-
-
 
 
 function renderBallDefault(number: number, kind?: string | null) {
@@ -40,20 +39,20 @@ function renderBallDarkMode(number: number, kind?: string | null) {
     const marbleCssClass = colorCheckDarkMode(number);
     const { marbleGlass, causticsGlass, shadowGlass } = marbleCssClass;
     return kind === "mega" || kind === "power"
-        ? `<div class="marble ${marbleGlass}">
+        ? `<div class="marble pulse ${marbleGlass}">
         <div class="highlight"></div>
         <div class="caustics ${causticsGlass}"></div>
         <div class="shadow ${shadowGlass}"></div>
          <div class="flex! items-center justify-center h-full"> ${number > 0 && number <= 9 ? '0' + number : number} </div>
         </div>`
-        : kind === "loto" ? `<div class="marble">
+        : kind === "loto" ? `<div class="marble pulse">
          <div class="highlight"></div>
         <div class="caustics"></div>
         <div class="shadow shadow-white-glass"></div>
         <div class="flex! items-center justify-center h-full">${number > 0 && number <= 9 ? '0' + number : number}</div>
         </div>`
             : `<span class="border-1 border-black inline-block min-[768px]:h-[160px] max-[430px]:h-[100px] absolute"></span>
-            <div class="marble black-glass">
+            <div class="marble black-glass pulse">
              <div class="highlight"></div>
         <div class="caustics"></div>
         <div class="shadow shadow-black-glass"></div>
@@ -127,6 +126,8 @@ function sapXep(arr: number[] = [...arrChoose]) {
     return arr.sort((a: number, b: number): number => a - b);
 }
 
+
+
 function generateMegaOrPower(arr: number[], kind?: string | null) {
     if (soLan >= 6) return;
     let num = Math.floor(Math.random() * arr.length);
@@ -136,11 +137,9 @@ function generateMegaOrPower(arr: number[], kind?: string | null) {
     if (index != -1) {
         if (toggled.checked) {
             resultPanel.innerHTML += renderBallDarkMode(arr[index], kind);
-        }
-        else {
+        } else {
             resultPanel.innerHTML += renderBallDefault(arr[index], kind);
         }
-
         arrChoose.push(arr[index]);
         arr.splice(index, 1);
         soLan += 1;
@@ -260,10 +259,9 @@ btnSort.onclick = function () {
         showNotification("Sắp xếp suôn sẻ", 3000, { background: "linear-gradient(to right, #eea2a2, #bbc1bf, #57c6e1, #b49fda, #7ac5d8)", color: "white" })
     }
 }
-const btnClean = document.getElementById("btnClean") as HTMLButtonElement;
-btnClean.onclick = function () {
+
+function clean() {
     resultPanel.replaceChildren();
-    showNotification("Clean xong, mời bạn nhấn 'Lấy số'", 1000, { background: "linear-gradient(to right, #fdfcfb, #e2d1c3)", color: "black" })
     arrChoose = [];
     newArrMega = [...arrMega];
     newArrPower = [...arrPower];
@@ -273,7 +271,11 @@ btnClean.onclick = function () {
     })
     selected = null;
     currentOption = null;
+}
+const btnClean = document.getElementById("btnClean") as HTMLButtonElement;
+btnClean.onclick = () => {
+    clean();
+    showNotification("Clean xong, mời bạn nhấn 'Lấy số'", 1000, { background: "linear-gradient(to right, #fdfcfb, #e2d1c3)", color: "black" })
 };
-
 
 
