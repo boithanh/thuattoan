@@ -31,8 +31,8 @@ toggled.onchange = () => {
 function renderBallDefault(number: number, kind?: string | null) {
     return kind === "mega" || kind === "power"
         ? `<p class="animate__animated animate__fadeInRight pulse ${colorCheckDefault(number)}">${number > 0 && number <= 9 ? '0' + number : number}</p>`
-        : kind === "loto" ? `<p class="animate__animated animate__fadeInRight pulse bg-lime-400">${number > 0 && number <= 9 ? '0' + number : number}</p>`
-            : `<span class="border-1 border-black inline-block min-[768px]:h-[100px] max-[430px]:h-[50px] absolute"></span><p class="animate__animated animate__fadeInRight pulse border-1 bg-red-800 text-white">${number > 0 && number <= 9 ? '0' + number : number}</p>`
+        : kind === "loto" ? `<p class="animate__animated animate__fadeInRight pulse bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-bl">${number > 0 && number <= 9 ? '0' + number : number}</p>`
+            : `<span class="border-1 border-black inline-block min-[768px]:h-[100px] max-[430px]:h-[50px] absolute"></span><p class="animate__animated animate__fadeInRight pulse border-1 bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl shadow-lg shadow-red-500/50 text-white">${number > 0 && number <= 9 ? '0' + number : number}</p>`
 }
 
 function renderBallDarkMode(number: number, kind?: string | null) {
@@ -45,7 +45,7 @@ function renderBallDarkMode(number: number, kind?: string | null) {
         <div class="shadow ${shadowGlass}"></div>
          <div class="flex! items-center justify-center h-full"> ${number > 0 && number <= 9 ? '0' + number : number} </div>
         </div>`
-        : kind === "loto" ? `<div class="marble pulse">
+        : kind === "loto" ? `<div class="marble white-glass pulse">
          <div class="highlight"></div>
         <div class="caustics"></div>
         <div class="shadow shadow-white-glass"></div>
@@ -103,7 +103,7 @@ function colorCheckDefault(number: number) {
             return 'bg-red-500 text-white';
         }
         case (number >= 10 && number <= 19): {
-            return 'bg-amber-500';
+            return 'bg-orange-400 text-white';
         }
         case (number >= 20 && number <= 29): {
             return 'bg-green-500 text-white';
@@ -129,7 +129,6 @@ function sapXep(arr: number[] = [...arrChoose]) {
 
 
 function generateMegaOrPower(arr: number[], kind?: string | null) {
-    if (soLan >= 6) return;
     let num = Math.floor(Math.random() * arr.length);
     let index = arr.findIndex((item, i) => {
         return i === num;
@@ -165,12 +164,14 @@ function generateLoto(arrMain: number[], kind?: string | null) {
                 resultPanel.innerHTML += renderBallDefault(arrMain[index], kind)
             }
 
-            arrChoose.push(arrMain[index])
+            arrChoose.push(arrMain[index]);
+            console.log(arrChoose);
+
             arrMain.splice(index, 1);
             soLan += 1;
         }
     }
-    else {
+    else if (soLan === 5) {
         specialChoosed = generateSpecial();
         if (toggled.checked) {
             resultPanel.innerHTML += renderBallDarkMode(specialChoosed!);
@@ -195,30 +196,42 @@ radios.forEach(radio => {
 
 const btn = document.getElementById("btnGen") as HTMLButtonElement
 btn.onclick = function () {
-    let isValid = false;
     if (currentOption && selected !== currentOption) {
         showNotification(`Bạn đang ở chức năng ${currentOption} \n Vui lòng nhấn nút "làm lại" rồi thử lại ^^`, 3000, { background: "linear-gradient(to right, #f6d365, #fda085)", color: "black" });
         return;
     }
-    if (soLan >= 6) {
-        showNotification("Đã chọn đủ số vui lòng reset lại", 3000, { background: "linear-gradient(to right, #30cfd0 , #330867)", color: "white" })
+    currentOption = selected;
+
+    if (!selected) {
+        showNotification("Chưa chọn loại gì nha bạn hiền", 3000, { background: "linear-gradient(to right, #ff758c, #ff7eb3)", color: "white" })
+    }
+    if (soLan < 6) {
+        if (selected == "mega") {
+            generateMegaOrPower(newArrMega, selected);
+        }
+        else if (selected == "power") {
+            generateMegaOrPower(newArrPower, selected)
+        }
+        else if (selected == "loto") {
+            generateLoto(newArrLoto, selected);
+        }
+    }
+    else if (soLan === 6) {
+        if (selected == "power") {
+            generateMegaOrPower(newArrPower, selected);
+        }
+    }
+    if (soLan === 6 && selected == "mega") {
+        showNotification("Đã chọn đủ 6 số mega.", 3000, { background: "linear-gradient(to right, #30cfd0 , #330867)", color: "white" });
         return;
     }
-    currentOption = selected;
-    if (selected == "mega") {
-        generateMegaOrPower(newArrMega, selected);
-        isValid = true;
+    if (soLan == 6 && selected == "loto") {
+        showNotification("Đã chọn đủ 5 số Lotto và 1 số đặc biệt", 3000, { background: "linear-gradient(to right, #30cfd0 , #330867)", color: "white" });
+        return;
     }
-    else if (selected == "power") {
-        generateMegaOrPower(newArrPower, selected)
-        isValid = true;
-    }
-    else if (selected == "loto") {
-        generateLoto(newArrLoto, selected);
-        isValid = true;
-    }
-    if (!isValid) {
-        showNotification("Chưa chọn loại gì nha bạn hiền", 3000, { background: "linear-gradient(to right, #ff758c, #ff7eb3)", color: "white" })
+    if (soLan === 7 && selected == "power") {
+        showNotification("Đã chọn đủ 6 số Power + 1 số bonus.", 3000, { background: "linear-gradient(to right, #30cfd0 , #330867)", color: "white" });
+        return;
     }
 }
 
@@ -246,13 +259,12 @@ btnSort.onclick = function () {
     if (string) {
         if (selected === "mega" || selected == "power") { resultPanel.innerHTML = string; }
         else {
-            resultPanel.innerHTML = string;
             if (toggled.checked) {
-                resultPanel.innerHTML += renderBallDarkMode(specialChoosed!);
+                resultPanel.innerHTML = string + renderBallDarkMode(specialChoosed!);
 
             }
             else {
-                resultPanel.innerHTML += renderBallDefault(specialChoosed!);
+                resultPanel.innerHTML = string + renderBallDefault(specialChoosed!);
             }
 
         }
@@ -265,6 +277,7 @@ function clean() {
     arrChoose = [];
     newArrMega = [...arrMega];
     newArrPower = [...arrPower];
+    newArrLoto = [...arrLoto];
     soLan = 0;
     radios.forEach((radio) => {
         radio.checked = false

@@ -31,35 +31,38 @@
 
  //blue-color
  .blue-glass {
-     background: radial-gradient(circle at 30% 30%,
-             rgba(255, 255, 255, 0.9) 0%,
-             rgba(230, 240, 255, 0.7) 5%,
-             rgba(180, 210, 255, 0.4) 15%,
-             rgba(100, 160, 230, 0.2) 30%,
-             transparent 50%);
+     //  background: radial-gradient(circle at 30% 30%,
+     //          rgba(255, 255, 255, 0.9) 0%,
+     //          rgba(230, 240, 255, 0.7) 5%,
+     //          rgba(180, 210, 255, 0.4) 15%,
+     //          rgba(100, 160, 230, 0.2) 30%,
+     //          transparent 50%);
+     background: rgba(0, 188, 255, 0.8);
  }
 
 
 
  .red-glass {
-     background: radial-gradient(circle at 30% 30%,
-             rgba(255, 255, 255, 0.9) 0%,
-             rgba(255, 230, 230, 0.7) 5%,
-             /* màu hồng nhạt */
-             rgba(255, 180, 180, 0.4) 15%,
-             /* màu đỏ nhạt */
-             rgba(230, 100, 100, 0.2) 30%,
-             /* màu đỏ */
-             transparent 50%);
+     //  background: radial-gradient(circle at 30% 30%,
+     //          rgba(255, 255, 255, 0.9) 0%,
+     //          rgba(255, 230, 230, 0.7) 5%,
+     //          /* màu hồng nhạt */
+     //          rgba(255, 180, 180, 0.4) 15%,
+     //          /* màu đỏ nhạt */
+     //          rgba(230, 100, 100, 0.2) 30%,
+     //          /* màu đỏ */
+     //          transparent 50%);
+     background: rgba(251, 44, 54, 0.8);
  }
 
  .yellow-glass {
-     background: radial-gradient(circle at 30% 30%,
-             rgba(255, 255, 255, 0.9) 0%,
-             rgba(255, 255, 230, 0.7) 5%,
-             rgba(255, 255, 180, 0.4) 15%,
-             rgba(230, 230, 100, 0.2) 30%,
-             transparent 50%);
+     //  background: radial-gradient(circle at 30% 30%,
+     //          rgba(255, 255, 255, 0.9) 0%,
+     //          rgba(255, 255, 230, 0.7) 5%,
+     //          rgba(255, 255, 180, 0.4) 15%,
+     //          rgba(230, 230, 100, 0.2) 30%,
+     //          transparent 50%);
+     background: rgba(255, 223, 32, 0.8);
  }
 
  .yellow-glass::before {
@@ -83,19 +86,21 @@
  }
 
  .shadow-yellow-glass {
-     background: radial-gradient(ellipse at center,
-             rgba(40, 40, 0, 0.6) 0%,
-             transparent 70%);
+     //  background: radial-gradient(ellipse at center,
+     //          rgba(40, 40, 0, 0.6) 0%,
+     //          transparent 70%);
+     background: rgb(255, 223, 32);
  }
 
 
  .green-glass {
-     background: radial-gradient(circle at 30% 30%,
-             rgba(255, 255, 255, 0.9) 0%,
-             rgba(230, 255, 230, 0.7) 5%,
-             rgba(180, 255, 180, 0.4) 15%,
-             rgba(100, 230, 100, 0.2) 30%,
-             transparent 50%);
+     //  background: radial-gradient(circle at 30% 30%,
+     //          rgba(255, 255, 255, 0.9) 0%,
+     //          rgba(230, 255, 230, 0.7) 5%,
+     //          rgba(180, 255, 180, 0.4) 15%,
+     //          rgba(100, 230, 100, 0.2) 30%,
+     //          transparent 50%);
+     background: rgba(154, 230, 0, 0.8);
  }
 
  .green-glass::before {
@@ -119,18 +124,20 @@
  }
 
  .shadow-green-glass {
-     background: radial-gradient(ellipse at center,
-             rgba(0, 40, 0, 0.6) 0%,
-             transparent 70%);
+     //  background: radial-gradient(ellipse at center,
+     //          rgba(0, 40, 0, 0.6) 0%,
+     //          transparent 70%);
+     background: rgb(154, 230, 0);
  }
 
  .purple-glass {
-     background: radial-gradient(circle at 30% 30%,
-             rgba(255, 255, 255, 0.9) 0%,
-             rgba(240, 230, 255, 0.7) 5%,
-             rgba(220, 180, 255, 0.4) 15%,
-             rgba(180, 100, 230, 0.2) 30%,
-             transparent 50%);
+     //   background: radial-gradient(circle at 30% 30%,
+     //           rgba(255, 255, 255, 0.9) 0%,
+     //           rgba(240, 230, 255, 0.7) 5%,
+     //           rgba(220, 180, 255, 0.4) 15%,
+     //           rgba(180, 100, 230, 0.2) 30%,
+     //           transparent 50%);
+     background: rgba(173, 70, 255, 0.8);
  }
 
  .purple-glass::before {
@@ -154,18 +161,20 @@
  }
 
  .shadow-purple-glass {
-     background: radial-gradient(ellipse at center,
-             rgba(20, 0, 40, 0.6) 0%,
-             transparent 70%);
+     //  background: radial-gradient(ellipse at center,
+     //          rgba(20, 0, 40, 0.6) 0%,
+     //          transparent 70%);
+     background: rgb(173, 70, 255);
  }
 
  .orange-glass {
-     background: radial-gradient(circle at 30% 30%,
-             rgba(255, 255, 255, 0.9) 0%,
-             rgba(255, 240, 230, 0.7) 5%,
-             rgba(255, 200, 180, 0.4) 15%,
-             rgba(230, 150, 100, 0.2) 30%,
-             transparent 50%);
+     //  background: radial-gradient(circle at 30% 30%,
+     //          rgba(255, 255, 255, 0.9) 0%,
+     //          rgba(255, 240, 230, 0.7) 5%,
+     //          rgba(255, 200, 180, 0.4) 15%,
+     //          rgba(230, 150, 100, 0.2) 30%,
+     //          transparent 50%);
+     background: rgba(255, 137, 4, 0.8);
  }
 
  .orange-glass::before {
@@ -189,9 +198,10 @@
  }
 
  .shadow-orange-glass {
-     background: radial-gradient(ellipse at center,
-             rgba(40, 20, 0, 0.6) 0%,
-             transparent 70%);
+     //  background: radial-gradient(ellipse at center,
+     //          rgba(40, 20, 0, 0.6) 0%,
+     //          transparent 70%);
+     background: rgb(255, 137, 4);
  }
 
  /* Lớp khúc xạ bên trong */
@@ -205,6 +215,22 @@
      border-radius: 45%;
      transform: rotate(45deg);
      animation: rotate 20s linear infinite;
+ }
+
+ .white-glass {
+     background: radial-gradient(circle at 30% 30%,
+             rgba(255, 255, 255, 0.9) 0%,
+             rgba(255, 255, 255, 0.7) 5%,
+             rgba(255, 255, 255, 0.4) 15%,
+             rgba(255, 255, 255, 0.2) 30%,
+             transparent 50%);
+ }
+
+ .white-glass::before {
+     background: radial-gradient(circle at 40% 40%,
+             rgba(255, 255, 255, 0.65) 0%,
+             rgba(255, 255, 255, 0.5) 10%,
+             transparent 40%);
  }
 
  .blue-glass::before {
@@ -306,16 +332,18 @@
  }
 
  .shadow-blue-glass {
-     background: radial-gradient(ellipse at center,
-             rgba(0, 20, 40, 0.6) 0%,
-             transparent 70%);
+     //  background: radial-gradient(ellipse at center,
+     //          rgba(0, 20, 40, 0.6) 0%,
+     //          transparent 70%);
+     background: rgb(0, 188, 255);
  }
 
  .shadow-red-glass {
-     background: radial-gradient(ellipse at center,
-             rgba(40, 0, 0, 0.6) 0%,
-             /* Màu đỏ đậm */
-             transparent 70%);
+     //  background: radial-gradient(ellipse at center,
+     //          rgba(40, 0, 0, 0.6) 0%,
+     //          /* Màu đỏ đậm */
+     //          transparent 70%);
+     background: rgb(251, 44, 54);
  }
 
 
@@ -353,4 +381,9 @@
          opacity: 0.8;
          transform: scale(1.2) rotate(25deg);
      }
+ }
+
+ .number-content div:nth-child(7) {
+     border: 2px solid white;
+     box-shadow: rgba(255, 255, 255, 0.56) 0px 22px 80px 4px;
  }
