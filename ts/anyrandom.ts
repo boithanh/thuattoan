@@ -4,7 +4,7 @@ document.getElementById("btnHighLow")?.style.setProperty("display", "none");
 const userSelected = document.getElementById("numbers") as HTMLInputElement;
 if (userSelected) {
     userSelected.addEventListener("change", function () {
-        if (userSelected.value === "655" || userSelected.value === "645") {
+        if (userSelected.value === "655" || userSelected.value === "645" || userSelected.value === "535") {
             document.getElementById("btnHighLow")?.style.setProperty("display", "inline-block");
         }
     })
@@ -204,6 +204,40 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                     }).join(" ").trim();
                     tagP.innerHTML = "Các số cao: " + high + "\n" + "Các số thấp: " + low + "\n" + "Template: " + demCao + "(cao)" + "-" + demThap + "(thấp)";
+                    modal.show();
+                }
+                else if (userSelected?.value === "535") {
+                    // let high = dataConverted.filter((item: any) => {
+                    //     if (Number(item) >= 18) {
+                    //         demCao++;
+                    //         return item;
+                    //     }
+                    // }
+                    // ).join(" ").trim();
+                    let high = [];
+                    let low = [];
+                    let lastIndex = dataConverted.length - 1;
+                    let special = dataConverted[lastIndex];
+                    let result = Number(special) >= 7 ? true : false;
+                    console.log(result);
+
+                    for (let i = 0; i <= dataConverted.length - 2; i++) {
+                        if (Number(dataConverted[i]) >= 18) {
+                            demCao++;
+                            high.push(dataConverted[i]);
+                            console.log(high);
+
+                        }
+                        else {
+                            demThap++;
+                            low.push(dataConverted[i])
+                        }
+                    }
+                    tagP.innerHTML = `Các số thấp: ${low.join(" ").trim()}` + "\n"
+                        + `Các số cao: ${high.join(" ").trim()}` + "\n"
+                        + `Template 5 số đầu: ${demCao}(cao) - ${demThap}(thấp)` + "\n"
+                        + `Số đặc biệt: ${special}` + "\n"
+                        + `Template số đặc biệt: ${result ? "(cao)" : "(thấp)"}`;
                     modal.show();
                 }
             }

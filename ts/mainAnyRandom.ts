@@ -16,6 +16,7 @@ const mainAnyRandom = () => {
     <option selected>Chỉ chọn field này khi sử dụng "xem cao thấp"</option>
     <option value="645">Xem cao thấp theo Mega 6/45</option>
     <option value="655">Xem cao thấp theo Power 6/55</option>
+    <option value="535">Xem cao thấp theo Lotto 5/35</option>
   </select>
 
                             <button type="submit"

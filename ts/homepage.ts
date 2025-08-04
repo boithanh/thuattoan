@@ -223,14 +223,35 @@ btn.onclick = function () {
     }
     if (soLan === 6 && selected == "mega") {
         showNotification("Đã chọn đủ 6 số mega.", 3000, { background: "linear-gradient(to right, #30cfd0 , #330867)", color: "white" });
+        navigator.clipboard.writeText(arrChoose.join(" ").trim())
+            .then(() => {
+                showNotification("Dãy số đã được lưu vào clipboard", 3000, { background: "linear-gradient(to right, #30cfd0 , #330867)", color: "white" });
+            })
+            .catch((err) => {
+                showNotification(`Lỗi khi copy: ${err}`, 3000, { background: "linear-gradient(to right, #667eea, #764ba2)", color: "white" });
+            });
         return;
     }
     if (soLan == 6 && selected == "loto") {
         showNotification("Đã chọn đủ 5 số Lotto và 1 số đặc biệt", 3000, { background: "linear-gradient(to right, #30cfd0 , #330867)", color: "white" });
+        navigator.clipboard.writeText(arrChoose.join(" ").trim() + ` ${specialChoosed}`)
+            .then(() => {
+                showNotification("Dãy số đã được lưu vào clipboard", 3000, { background: "linear-gradient(to right, #30cfd0 , #330867)", color: "white" });
+            })
+            .catch((err) => {
+                showNotification(`Lỗi khi copy: ${err}`, 3000, { background: "linear-gradient(to right, #667eea, #764ba2)", color: "white" });
+            });
         return;
     }
     if (soLan === 7 && selected == "power") {
         showNotification("Đã chọn đủ 6 số Power + 1 số bonus.", 3000, { background: "linear-gradient(to right, #30cfd0 , #330867)", color: "white" });
+        navigator.clipboard.writeText(arrChoose.join(" ").trim())
+            .then(() => {
+                showNotification("Dãy số đã được lưu vào clipboard", 3000, { background: "linear-gradient(to right, #30cfd0 , #330867)", color: "white" });
+            })
+            .catch((err) => {
+                showNotification(`Lỗi khi copy: ${err}`, 3000, { background: "linear-gradient(to right, #667eea, #764ba2)", color: "white" });
+            });
         return;
     }
 }
@@ -268,8 +289,16 @@ btnSort.onclick = function () {
             }
 
         }
-        showNotification("Sắp xếp suôn sẻ", 3000, { background: "linear-gradient(to right, #eea2a2, #bbc1bf, #57c6e1, #b49fda, #7ac5d8)", color: "white" })
+        showNotification("Sắp xếp suôn sẻ", 3000, { background: "linear-gradient(to right, #eea2a2, #bbc1bf, #57c6e1, #b49fda, #7ac5d8)", color: "white" });
+        navigator.clipboard.writeText(arrSorted.join(" ").trim() + ` ${specialChoosed}`)
+            .then(() => {
+                showNotification("Dãy số đã được lưu vào clipboard", 3000, { background: "linear-gradient(to right, #30cfd0 , #330867)", color: "white" });
+            })
+            .catch((err) => {
+                showNotification(`Lỗi khi copy: ${err}`, 3000, { background: "linear-gradient(to right, #667eea, #764ba2)", color: "white" });
+            });
     }
+
 }
 
 function clean() {
