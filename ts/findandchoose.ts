@@ -12,6 +12,8 @@ let tableContent = document.querySelector("table") as HTMLElement
 document.getElementById("btnLoc")!.onclick = () => {
     if (getValue()) {
         textOutput.value = removeDuplicate().map(Number).join("\n"); //.map(Number) : duyệt qua từng phần tử và chuyển string thành number. Cách viết tường mình: .map(Number(a[i]))
+        console.log(removeDuplicate());
+
         textNotExist.value = numberNotExist(Number(selectLoai.value)).map(Number).join("\n");
         document.getElementById("table-inner")?.classList.remove("hidden");
         tableContent.innerHTML = renderColumn();
@@ -52,7 +54,7 @@ function removeDuplicate() {
     let arrData = convertToArray(getValue());
     let arrSet = [...new Set(arrData)];
     let backtoArr = [...arrSet];
-    return backtoArr;
+    return backtoArr.sort();
 }
 
 function numberNotExist(loai: number = 45) {
@@ -160,14 +162,14 @@ function renderColumn() {
         else if (objCount[key] === 6) sixTimes.push(key);
         else if (objCount[key] === 7) seventTimes.push(key);
     }
-    shuttfleArr(zeroTimes);
-    shuttfleArr(oneTime);
-    shuttfleArr(twoTimes);
-    shuttfleArr(threeTimes);
-    shuttfleArr(fourTimes);
-    shuttfleArr(fineTimes);
-    shuttfleArr(sixTimes);
-    shuttfleArr(seventTimes);
+    // shuttfleArr(zeroTimes);
+    // shuttfleArr(oneTime);
+    // shuttfleArr(twoTimes);
+    // shuttfleArr(threeTimes);
+    // shuttfleArr(fourTimes);
+    // shuttfleArr(fineTimes);
+    // shuttfleArr(sixTimes);
+    // shuttfleArr(seventTimes);
 
     const maxLength = Math.max(zeroTimes.length, oneTime.length, twoTimes.length, threeTimes.length, fourTimes.length, fineTimes.length, sixTimes.length, seventTimes.length);
     // Render bảng
