@@ -12,8 +12,6 @@ let tableContent = document.querySelector("table") as HTMLElement
 document.getElementById("btnLoc")!.onclick = () => {
     if (getValue()) {
         textOutput.value = removeDuplicate().map(Number).join("\n"); //.map(Number) : duyệt qua từng phần tử và chuyển string thành number. Cách viết tường mình: .map(Number(a[i]))
-        console.log(removeDuplicate());
-
         textNotExist.value = numberNotExist(Number(selectLoai.value)).map(Number).join("\n");
         document.getElementById("table-inner")?.classList.remove("hidden");
         tableContent.innerHTML = renderColumn();
@@ -143,33 +141,32 @@ function renderColumn() {
     let objCount = countingDuplicate();
 
     // Phân loại dữ liệu
-    let oneTime: string[] = [];
-    let twoTimes: string[] = [];
-    let threeTimes: string[] = [];
-    let fourTimes: string[] = [];
-    let fineTimes: string[] = [];
-    let sixTimes: string[] = [];
-    let seventTimes: string[] = [];
+    let oneTime: number[] = [];
+    let twoTimes: number[] = [];
+    let threeTimes: number[] = [];
+    let fourTimes: number[] = [];
+    let fineTimes: number[] = [];
+    let sixTimes: number[] = [];
+    let seventTimes: number[] = [];
     let zeroTimes: string[] = textNotExist.value.split("\n")
 
 
     for (let key in objCount) {
-        if (objCount[key] === 1) oneTime.push(key);
-        else if (objCount[key] === 2) twoTimes.push(key);
-        else if (objCount[key] === 3) threeTimes.push(key);
-        else if (objCount[key] === 4) fourTimes.push(key);
-        else if (objCount[key] === 5) fineTimes.push(key);
-        else if (objCount[key] === 6) sixTimes.push(key);
-        else if (objCount[key] === 7) seventTimes.push(key);
+        if (objCount[key] === 1) oneTime.push(Number(key));
+        else if (objCount[key] === 2) twoTimes.push(Number(key));
+        else if (objCount[key] === 3) threeTimes.push(Number(key));
+        else if (objCount[key] === 4) fourTimes.push(Number(key));
+        else if (objCount[key] === 5) fineTimes.push(Number(key));
+        else if (objCount[key] === 6) sixTimes.push(Number(key));
+        else if (objCount[key] === 7) seventTimes.push(Number(key));
     }
-    // shuttfleArr(zeroTimes);
-    // shuttfleArr(oneTime);
-    // shuttfleArr(twoTimes);
-    // shuttfleArr(threeTimes);
-    // shuttfleArr(fourTimes);
-    // shuttfleArr(fineTimes);
-    // shuttfleArr(sixTimes);
-    // shuttfleArr(seventTimes);
+  oneTime.sort((a,b)=>a-b);
+    twoTimes.sort((a,b)=>a-b)
+    threeTimes.sort((a,b)=>a-b)
+    fourTimes.sort((a,b)=>a-b)
+    fineTimes.sort((a,b)=>a-b)
+    sixTimes.sort((a,b)=>a-b)
+    seventTimes.sort((a,b)=>a-b)
 
     const maxLength = Math.max(zeroTimes.length, oneTime.length, twoTimes.length, threeTimes.length, fourTimes.length, fineTimes.length, sixTimes.length, seventTimes.length);
     // Render bảng
@@ -199,10 +196,7 @@ function renderColumn() {
         const seven = seventTimes[i] ?? "";
         str += `
         <tr class="bg-gray-100 border-b border-black text-md">
-            <td class="px-6 py-4">${zero === ""
-                ? "" : Math.floor(Number(zero) / 10) !== 0
-                    ? zero :
-                    "0" + zero}</td>
+            <td class="px-6 py-4">${zero}</td>
             <td class="px-6 py-4">${one}</td>
             <td class="px-6 py-4">${two}</td>
             <td class="px-6 py-4">${three}</td>

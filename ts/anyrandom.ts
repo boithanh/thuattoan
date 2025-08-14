@@ -133,6 +133,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 showNotification("Chưa có gì nên chưa sắp xếp nha")
             }
         })
+
+        function colorCheck(num:number){
+            switch(true){
+                case num >0 && num <=9: return "Đỏ"
+                case num >9 && num <=19: return "Cam"
+                case num >19 && num <=29: return "Lá"
+                case num >29 && num <=39: return "Dương"
+                case num >39 && num <=49: return "Tím"
+                case num >49 && num <=55: return "Vàng"
+                default: return "Không màu"
+            }
+        }
         document.getElementById("btnChanLe")?.addEventListener('click', function () {
             let data = getValue();
             if (data) {
@@ -140,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // console.log(dataConverted);
                 let even: string = "";
                 let odd: string = "";
+                let color:string= "";
                 let demChan = 0;
                 let demLe = 0;
                 for (let num of dataConverted) {
@@ -151,12 +164,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         odd += " + ";
                         demLe++;
                     }
+                    color += colorCheck(Number(num)) + " ";
                 }
                 // let even = dataConverted.filter((item: any) => item % 2 === 0).join("\n").trim();
                 // let odd = dataConverted.filter((item: any) => item % 2 !== 0).join("\n").trim();
                 tagP.innerHTML = dataConverted.join(" ").trim();
                 tagP.innerHTML += "\n" + even + odd;
                 tagP.innerHTML += "\n" + "Nhận xét: " + demChan + "(chẵn)" + " - " + demLe + "(lẻ)";
+                 tagP.innerHTML += "\n" + `Template màu sắc: ${color}`;
                 modal.show();
             }
             else {
