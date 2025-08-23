@@ -80,7 +80,7 @@ body {
   color: white;
 }
 :root.dark #numberPanel {
-  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+  background: linear-gradient(135deg, #231557, #44107A, #FF1361, #fff700);
 }
 :root.dark #numberPanel .control-panel {
   background: rgba(0, 0, 0, 0.3);
