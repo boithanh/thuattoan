@@ -35,6 +35,8 @@ const mainFindAndChoose = () => {
                 <select class="form-select form-select-lg" name="selectLoai" id="selectLoai">
                     <option selected value=45>Mega 6/45</option>
                     <option value=55>Power 6/55</option>
+                    <option value=35>Loto 5/35 (5 số đầu)</option>
+                    <option value=12>Loto 5/35 (Số đặc biệt)</option>
                 </select>
             </div>
 

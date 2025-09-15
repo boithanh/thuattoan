@@ -42,11 +42,11 @@ function convertToArray(str: string) {
     return result2.flat();
 }
 
-function convertStr(str: string) {
-    const lines = str.trim().split('\n');
-    const result = lines.map(line => line.match(/\d{2}/g));
-    return result.flat();
-}
+// function convertStr(str: string) {
+//     const lines = str.trim().split('\n');
+//     const result = lines.map(line => line.match(/\d{2}/g));
+//     return result.flat();
+// }
 
 function removeDuplicate() {
     let arrData = convertToArray(getValue());
@@ -55,7 +55,7 @@ function removeDuplicate() {
     return backtoArr.sort();
 }
 
-function numberNotExist(loai: number = 45) {
+function numberNotExist(loai: number) {
     let arrExist = removeDuplicate().map(Number);
     let newArr = [];
     for (let i = 1; i <= loai; i++) {
@@ -67,59 +67,59 @@ function numberNotExist(loai: number = 45) {
     return newArr;
 }
 
-function shuttfleArr(arr: any[]) {
-    for (let i = arr.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * arr.length);
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-}
+// function shuttfleArr(arr: any[]) {
+//     for (let i = arr.length - 1; i > 0; i--) {
+//         let j = Math.floor(Math.random() * arr.length);
+//         [arr[i], arr[j]] = [arr[j], arr[i]];
+//     }
+//     return arr;
+// }
 
 
-function getDuplicateValues() {
-    let arrData = convertToArray(getValue());
-    return arrData.filter((item, index) => (arrData.indexOf(item) !== index))
-}
+// function getDuplicateValues() {
+//     let arrData = convertToArray(getValue());
+//     return arrData.filter((item, index) => (arrData.indexOf(item) !== index))
+// }
 
 // Tìm các phần tử đã lọc trùng trong mảng gốc và In ra số lầ xuất hiện của chúng trong mảng gốc
 //Cách 1: 
-function findingNumber() {
-    let originArr = convertToArray(getValue());
-    let arrFiltered = removeDuplicate();
-    let result: { data: string, dem: number }[] = [];
-    for (let index in arrFiltered) {
-        let dem = 0;
-        for (let value of originArr) {
-            if (value == arrFiltered[index]) {
-                dem++;
-            }
-        }
-        result.push({ data: arrFiltered[index], dem })
-    }
-    return result;
-}
+// function findingNumber() {
+//     let originArr = convertToArray(getValue());
+//     let arrFiltered = removeDuplicate();
+//     let result: { data: string, dem: number }[] = [];
+//     for (let index in arrFiltered) {
+//         let dem = 0;
+//         for (let value of originArr) {
+//             if (value == arrFiltered[index]) {
+//                 dem++;
+//             }
+//         }
+//         result.push({ data: arrFiltered[index], dem })
+//     }
+//     return result;
+// }
 
 
-//cách 2:
-function findingNumberVer2() {
-    let originArr = convertToArray(getValue());
-    let arrFiltered = removeDuplicate();
-    let result: { data: string, dem: number }[] = [];
-    for (let item in arrFiltered) {
-        let dem = 0;
-        originArr.find((data, index) => {
-            if (data === item) {
-                dem++;
-            }
-            else {
-                dem = 1
-            }
-        })
-        result.push({ data: item, dem })
-    }
+// //cách 2:
+// function findingNumberVer2() {
+//     let originArr = convertToArray(getValue());
+//     let arrFiltered = removeDuplicate();
+//     let result: { data: string, dem: number }[] = [];
+//     for (let item in arrFiltered) {
+//         let dem = 0;
+//         originArr.find((data, index) => {
+//             if (data === item) {
+//                 dem++;
+//             }
+//             else {
+//                 dem = 1
+//             }
+//         })
+//         result.push({ data: item, dem })
+//     }
 
-    return result;
-}
+//     return result;
+// }
 
 
 //cách 3:
